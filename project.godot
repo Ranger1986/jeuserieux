@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Jeu Serieux"
-run/main_scene="res://Scene/Immeuble.tscn"
+run/main_scene="res://Scene/MainFrame.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

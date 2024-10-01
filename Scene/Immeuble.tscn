@@ -1,69 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://8wtls8bv34dx"]
+[gd_scene load_steps=3 format=3 uid="uid://j62pxnns4g6t"]
 
-[ext_resource type="Texture2D" uid="uid://c5a17wklh1ffl" path="res://Assets/immeuble.png" id="1_pc0qu"]
-[ext_resource type="PackedScene" uid="uid://dxkmktmcqacip" path="res://Scene/Window.tscn" id="2_dwok2"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_t2cfg"]
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://c5a17wklh1ffl" path="res://Assets/immeuble.png" id="1_0nvuj"]
+[ext_resource type="Script" path="res://Scripts/Immeuble.gd" id="1_5341l"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_5341l")
 
 [node name="Immeuble" type="Sprite2D" parent="."]
-position = Vector2(540, 328)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_pc0qu")
-
-[node name="Window" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(451, 174)
-
-[node name="Window2" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(542, 174)
-
-[node name="Window3" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(638, 173)
-
-[node name="Window4" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(451, 252)
-
-[node name="Window5" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(542, 252)
-
-[node name="Window6" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(638, 251)
-
-[node name="Window7" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(446, 346)
-
-[node name="Window8" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(537, 346)
-
-[node name="Window9" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(633, 345)
-
-[node name="Window10" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(447, 425)
-
-[node name="Window11" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(538, 425)
-
-[node name="Window12" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(634, 424)
-
-[node name="Window13" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(445, 520)
-
-[node name="Window14" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(536, 520)
-
-[node name="Window15" parent="." instance=ExtResource("2_dwok2")]
-position = Vector2(632, 519)
-
-[node name="Display" type="Polygon2D" parent="."]
-position = Vector2(1, 44)
-polygon = PackedVector2Array(0, 0, 250, 0, 250, 600, 0, 600)
-
-[node name="DisplayLabel" type="Label" parent="Display"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Habitant:"
-label_settings = SubResource("LabelSettings_t2cfg")
+texture = ExtResource("1_0nvuj")
