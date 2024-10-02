@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c80fy286kxlia"]
+[gd_scene load_steps=6 format=3 uid="uid://c80fy286kxlia"]
 
 [ext_resource type="Script" path="res://Scripts/store_item.gd" id="1_f3p11"]
+[ext_resource type="Script" path="res://Scene/sell.gd" id="2_6d7d8"]
+[ext_resource type="Script" path="res://Scene/stock.gd" id="3_uicns"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vw8v"]
 font_color = Color(0, 0, 0, 1)
@@ -9,6 +11,7 @@ font_color = Color(0, 0, 0, 1)
 font_color = Color(0.215686, 0.215686, 0.215686, 1)
 
 [node name="StoreItem" type="Control"]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,6 +65,7 @@ offset_top = 64.0
 offset_right = 167.0
 offset_bottom = 95.0
 text = "Vendre"
+script = ExtResource("2_6d7d8")
 
 [node name="Stock" type="Button" parent="ColorRect"]
 custom_minimum_size = Vector2(85, 25)
@@ -71,3 +75,4 @@ offset_top = 64.0
 offset_right = 285.0
 offset_bottom = 95.0
 text = "Stocker"
+script = ExtResource("3_uicns")
