@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c80fy286kxlia"]
 
-[ext_resource type="Texture2D" uid="uid://dwk6s6oqvqwmf" path="res://Assets/placeholder.jpg" id="1_2352g"]
+[ext_resource type="Script" path="res://Scripts/store_item.gd" id="1_f3p11"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vw8v"]
 font_color = Color(0, 0, 0, 1)
@@ -8,13 +8,14 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_qwy1q"]
 font_color = Color(0.215686, 0.215686, 0.215686, 1)
 
-[node name="Item" type="Control"]
+[node name="StoreItem" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_f3p11")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(300, 100)
@@ -30,10 +31,9 @@ offset_left = 12.5
 offset_top = 12.5
 offset_right = 87.5
 offset_bottom = 87.5
-texture = ExtResource("1_2352g")
 expand_mode = 1
 
-[node name="NameDescButton" type="Label" parent="ColorRect"]
+[node name="NameDesc" type="Label" parent="ColorRect"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 10.0
@@ -43,24 +43,8 @@ text = "NOM:
 description"
 label_settings = SubResource("LabelSettings_4vw8v")
 
-[node name="SellButton" type="Button" parent="ColorRect"]
-custom_minimum_size = Vector2(85, 25)
+[node name="StockPrice" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 103.0
-offset_top = 64.0
-offset_right = 167.0
-offset_bottom = 95.0
-text = "Vendre"
-
-[node name="StockButton" type="Button" parent="ColorRect"]
-custom_minimum_size = Vector2(85, 25)
-offset_left = 200.0
-offset_top = 64.0
-offset_right = 285.0
-offset_bottom = 95.0
-text = "Stocker"
-
-[node name="StockPriceLabel" type="Label" parent="ColorRect"]
 offset_left = 203.0
 offset_top = 10.0
 offset_right = 290.0
@@ -69,3 +53,21 @@ text = "x10
 100$"
 label_settings = SubResource("LabelSettings_qwy1q")
 horizontal_alignment = 2
+
+[node name="Sell" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(85, 25)
+layout_mode = 0
+offset_left = 103.0
+offset_top = 64.0
+offset_right = 167.0
+offset_bottom = 95.0
+text = "Vendre"
+
+[node name="Stock" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(85, 25)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 64.0
+offset_right = 285.0
+offset_bottom = 95.0
+text = "Stocker"

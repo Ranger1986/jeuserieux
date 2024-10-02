@@ -3,9 +3,9 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var display = owner.find_child("DisplayLabel")
-	var scene = preload("res://Scene/Window.tscn")
+	var scene = preload("res://Scene/window.tscn")
 	var size = find_child("Immeuble").get_rect().size
-	print(find_child("Immeuble").get_rect().position)
+	#print(find_child("Immeuble").get_rect().position)
 	var positionInstance = Vector2(0,0)
 	var margin = 10
 	for i in range(4):

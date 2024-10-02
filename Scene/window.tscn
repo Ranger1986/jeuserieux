@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxkmktmcqacip"]
+
+[ext_resource type="Script" path="res://Scripts/foyer.gd" id="1_ydjkb"]
+[ext_resource type="Texture2D" uid="uid://bctyoqmohrfcb" path="res://Assets/window.jpg" id="2_qbgmt"]
+[ext_resource type="Script" path="res://Scripts/window.gd" id="3_jy1uo"]
+
+[node name="Window" type="Node2D"]
+script = ExtResource("1_ydjkb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_qbgmt")
+script = ExtResource("3_jy1uo")

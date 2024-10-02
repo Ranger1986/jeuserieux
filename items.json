@@ -1,0 +1,12 @@
+[
+  {
+	"id": 0,
+	"nom": "PlaceHolder",
+	"imgPath": "res://Assets/placeholder.jpg",
+	"lumProt": 0,
+	"noiseProt": 0,
+	"priceStock": 0,
+	"stock": 0,
+	"Show": false
+  }
+]
