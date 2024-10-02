@@ -6,6 +6,9 @@ var name_desc: Label
 var stock_price: Label
 var sell_button: Button
 var stock_button: Button
+
+signal budget_modified_signal(amount: float)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	image = find_child("Image")
@@ -39,7 +42,9 @@ func give_parameters(info: Item) -> void:
 		hide();
 		
 func sell():
+	emit_signal("budget_modified_signal", -50)
 	print("sell")
 	
 func stock():
+	emit_signal("budget_modified_signal", +50)
 	print("stock")

@@ -55,7 +55,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_527my")
 
-[node name="Label" type="Label" parent="."]
+[node name="Budget_player" type="Label" parent="."]
 offset_left = 466.0
 offset_top = 2.0
 offset_right = 694.0
