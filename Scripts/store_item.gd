@@ -34,13 +34,6 @@ func give_parameters(info: Item) -> void:
 	name_desc.text += "Lum: " + str(info.lumProt) + "\t"
 	name_desc.text += "Bruit: " + str(info.noiseProt) 
 	stock_price.text = str(info.priceStock) + "$\nx" + str(info.stock)
-<<<<<<< HEAD
-
-
-
-func _on_sell_pressed() -> void:
-	pass # Replace with function body.
-=======
 	
 	if info.hide:
 		hide();
@@ -50,4 +43,3 @@ func sell():
 	
 func stock():
 	print("stock")
->>>>>>> PieBranch
