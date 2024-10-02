@@ -34,3 +34,8 @@ func give_parameters(info: Dictionary) -> void:
 	name_desc.text += "Lum: " + str(info.lumProt) + "\t"
 	name_desc.text += "Bruit: " + str(info.noiseProt) 
 	stock_price.text = str(info.priceStock) + "$\nx" + str(info.stock)
+
+
+
+func _on_sell_pressed() -> void:
+	pass # Replace with function body.
