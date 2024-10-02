@@ -6,6 +6,7 @@ var name_desc: Label
 var stock_price: Label
 var sell_button: Button
 var stock_button: Button
+var priceStock: float
 
 signal budget_modified_signal(amount: float)
 
@@ -37,14 +38,16 @@ func give_parameters(info: Item) -> void:
 	name_desc.text += "Lum: " + str(info.lumProt) + "\t"
 	name_desc.text += "Bruit: " + str(info.noiseProt) 
 	stock_price.text = str(info.priceStock) + "$\nx" + str(info.stock)
+	priceStock = info.priceStock
+	
 	
 	if info.hide:
 		hide();
 		
 func sell():
-	emit_signal("budget_modified_signal", -50)
+	emit_signal("budget_modified_signal", priceStock)
 	print("sell")
 	
 func stock():
-	emit_signal("budget_modified_signal", +50)
+	emit_signal("budget_modified_signal", -priceStock)
 	print("stock")
