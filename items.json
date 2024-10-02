@@ -7,6 +7,26 @@
 	"noiseProt": 0,
 	"priceStock": 0,
 	"stock": 0,
-	"Show": false
+	"hide": false
+  },
+  {
+	"id": 1,
+	"nom": "PlaceHolder1",
+	"imgPath": "res://Assets/placeholder.jpg",
+	"lumProt": 0,
+	"noiseProt": 0,
+	"priceStock": 0,
+	"stock": 0,
+	"hide": true
+  },
+  {
+	"id": 2,
+	"nom": "PlaceHolder2",
+	"imgPath": "res://Assets/placeholder.jpg",
+	"lumProt": 0,
+	"noiseProt": 0,
+	"priceStock": 0,
+	"stock": 0,
+	"hide": false
   }
 ]
