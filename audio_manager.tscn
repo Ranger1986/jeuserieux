@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl24ckrt2i1x4"]
+
+[ext_resource type="Script" path="res://GlobalAudioSettings.gd" id="1_5m3bq"]
+[ext_resource type="AudioStream" uid="uid://7gx3w0alcrbr" path="res://Assets/Home Power.wav" id="1_hxkxl"]
+
+[node name="AudioManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5m3bq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hxkxl")
+volume_db = -10.0
+autoplay = true

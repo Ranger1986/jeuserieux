@@ -10,17 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Jeu Serieux"
-run/main_scene="res://Scene/Immeuble.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/name="Menu"
+run/main_scene="res://menu.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[editor]
+[autoload]
 
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
+AudioManager="*res://audio_manager.tscn"
 
-[rendering]
+[display]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"

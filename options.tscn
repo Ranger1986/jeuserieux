@@ -1,0 +1,150 @@
+[gd_scene load_steps=4 format=3 uid="uid://dadaqj1qxrqn0"]
+
+[ext_resource type="Script" path="res://Options.gd" id="1_7tw5h"]
+[ext_resource type="Texture2D" uid="uid://bnwp508uo0v0f" path="res://Assets/sunLow.png" id="2_gg5oo"]
+[ext_resource type="FontFile" uid="uid://b6ocg4l0krikr" path="res://Assets/Pixeled.ttf" id="2_q2pju"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7tw5h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -288.0
+offset_right = 512.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gg5oo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="VBoxContainerVideo" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainerVideo"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_font_sizes/font_size = 25
+text = "Graphismes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/VBoxContainerVideo/Label3"]
+position = Vector2(-1737, -73)
+scale = Vector2(3.01293, 2.04958)
+points = PackedVector2Array(655, 70, 642, 70, 629, 70, 616, 70, 600.284, 70, 590, 70, 577, 70)
+width = 1.99
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/VBoxContainerVideo"]
+layout_mode = 2
+size_flags_horizontal = 4
+selected = 2
+item_count = 3
+popup/item_0/text = "1920 x 1080"
+popup/item_1/text = "1600 x 900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+script = ExtResource("1_7tw5h")
+
+[node name="OptionButton2" type="OptionButton" parent="VBoxContainer/VBoxContainerVideo"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+selected = 1
+item_count = 2
+popup/item_0/text = "Plein écran"
+popup/item_1/text = "Fenêtré"
+popup/item_1/id = 3
+script = ExtResource("1_7tw5h")
+
+[node name="VBoxContainerAudio" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainerAudio"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_font_sizes/font_size = 25
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/VBoxContainerAudio/Label"]
+position = Vector2(-223, 2)
+scale = Vector2(1.39721, 0.912768)
+points = PackedVector2Array(655, 70, 642, 70, 629, 70, 616, 70, 600.284, 70, 590, 70, 577, 70)
+width = 1.99
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/VBoxContainerAudio"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_font_sizes/font_size = 15
+text = "Muet"
+script = ExtResource("1_7tw5h")
+
+[node name="Label4" type="Label" parent="VBoxContainer/VBoxContainerAudio"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_font_sizes/font_size = 15
+text = "Volume du son :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainerAudio/Label4"]
+layout_mode = 2
+offset_left = -45.0
+offset_top = 51.0
+offset_right = 218.0
+offset_bottom = 67.0
+max_value = 20.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_left = 11.0
+offset_top = 648.0
+offset_right = 115.0
+offset_bottom = 702.0
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_q2pju")
+text = "Retour"
+script = ExtResource("1_7tw5h")
+
+[connection signal="item_selected" from="VBoxContainer/VBoxContainerVideo/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/VBoxContainerVideo/OptionButton2" to="." method="_on_option_button_2_item_selected"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainerAudio/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainerAudio/Label4/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Node2D/Button" to="Node2D/Button" method="_on_pressed"]
