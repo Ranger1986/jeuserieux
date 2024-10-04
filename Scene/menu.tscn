@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://d13bvfyp75hp4"]
+
+[ext_resource type="Texture2D" uid="uid://bibvpfrmu6cmh" path="res://Assets/night.png" id="1_g0bks"]
+[ext_resource type="FontFile" uid="uid://b6ocg4l0krikr" path="res://Assets/Pixeled.ttf" id="2_xe2mh"]
+[ext_resource type="Script" path="res://Scripts/OnOptions.gd" id="3_85kig"]
+
+[sub_resource type="Theme" id="Theme_qccr0"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_63diq"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g0bks")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme = SubResource("Theme_qccr0")
+theme_override_constants/separation = 350
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_xe2mh")
+text = "LumiNoise"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_top = 490.0
+offset_bottom = 490.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_63diq")
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer2"]
+position = Vector2(20, 0)
+script = ExtResource("3_85kig")
+
+[node name="Button" type="Button" parent="VBoxContainer2/Node2D"]
+offset_left = -10.0
+offset_right = 130.0
+offset_bottom = 64.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_xe2mh")
+theme_override_font_sizes/font_size = 20
+text = "Jouer"
+
+[node name="Button2" type="Button" parent="VBoxContainer2/Node2D"]
+offset_left = -10.0
+offset_top = 81.0
+offset_right = 130.0
+offset_bottom = 145.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_xe2mh")
+theme_override_font_sizes/font_size = 20
+text = "Options"
+
+[node name="Button3" type="Button" parent="VBoxContainer2/Node2D"]
+offset_left = -10.0
+offset_top = 162.0
+offset_right = 130.0
+offset_bottom = 226.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_xe2mh")
+theme_override_font_sizes/font_size = 20
+text = "Quitter"
+
+[connection signal="pressed" from="VBoxContainer2/Node2D/Button" to="VBoxContainer2/Node2D" method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Node2D/Button2" to="VBoxContainer2/Node2D" method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Node2D/Button3" to="VBoxContainer2/Node2D" method="_on_button_3_pressed"]
