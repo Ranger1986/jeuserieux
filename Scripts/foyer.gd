@@ -14,6 +14,8 @@ var luminosite
 var son
 var budget
 
+static var foyer_cible
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	habitant = 1 + randi() % 2  # Random between 1 and 3
@@ -33,3 +35,13 @@ func display_info() -> void:
 	label.text += "Luminosité:\n" + str(luminosite) + "%\n"
 	label.text += "Sonorité:\n" + str(son) + "%\n"
 	label.text += "Budget:\n" + str(budget) + "$\n"
+
+# Fonction pour récupérer la liste des foyers (accessible a tous)
+static func get_foyer_cible() -> Foyer:
+	return foyer_cible
+	
+static func set_cible(cible: Foyer) -> void:
+	foyer_cible = cible
+
+func add_money(amount: float) -> void:
+	budget += amount

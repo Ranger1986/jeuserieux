@@ -9,6 +9,8 @@ var stock_button: Button
 var priceStock: float
 
 signal budget_modified_signal(amount: float)
+signal budget_foyer_modified_signal(amount: float)
+signal refresh_display_foyer_signal()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +48,8 @@ func give_parameters(info: Item) -> void:
 		
 func sell():
 	emit_signal("budget_modified_signal", priceStock)
+	emit_signal("budget_foyer_modified_signal", -priceStock)
+	emit_signal("refresh_display_foyer_signal")
 	print("sell")
 	
 func stock():

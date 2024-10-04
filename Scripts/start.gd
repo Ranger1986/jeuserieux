@@ -24,6 +24,8 @@ func _ready() -> void:
 		instance.give_parameters(item)
 		instance.owner=self
 		instance.connect("budget_modified_signal", Callable(self, "_on_budget_modified"))
+		instance.connect("budget_foyer_modified_signal", Callable(self, "_on_modify_budget_foyer"))
+		instance.connect("refresh_display_foyer_signal", Callable(self, "_on_refresh_display_foyer"))
 	pass # Replace with function body.
 
 
@@ -33,8 +35,20 @@ func _process(delta: float) -> void:
 	budget_player_label.text = "Budget : " + str(budget_player)
 	pass
 
+# slot (s'appelle lors de la réception du signal)
 func _on_budget_modified(amount: float) -> void:
 	modify_budget(amount)
 
 func modify_budget(amount: float) -> void:
 	budget_player += amount
+
+func _on_modify_budget_foyer(amount: float) -> void:
+	modify_budget_foyer(amount)
+	
+func modify_budget_foyer(amount: float) -> void:
+	var target = Foyer.get_foyer_cible()
+	target.add_money(amount)
+
+func _on_refresh_display_foyer() -> void:
+	var cible = Foyer.get_foyer_cible()
+	cible.display_info()
