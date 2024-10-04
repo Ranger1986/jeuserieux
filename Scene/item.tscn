@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c80fy286kxlia"]
 
 [ext_resource type="Script" path="res://Scripts/store_item.gd" id="1_f3p11"]
-[ext_resource type="Script" path="res://Scene/sell.gd" id="2_6d7d8"]
-[ext_resource type="Script" path="res://Scene/stock.gd" id="3_uicns"]
+[ext_resource type="Script" path="res://Scripts/sell.gd" id="2_6d7d8"]
+[ext_resource type="Script" path="res://Scripts/stock.gd" id="3_uicns"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vw8v"]
 font_color = Color(0, 0, 0, 1)

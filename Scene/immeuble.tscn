@@ -1,10 +1,79 @@
-[gd_scene load_steps=3 format=3 uid="uid://j62pxnns4g6t"]
+[gd_scene load_steps=4 format=3 uid="uid://j62pxnns4g6t"]
 
-[ext_resource type="Texture2D" uid="uid://c5a17wklh1ffl" path="res://Assets/immeuble.png" id="1_0nvuj"]
 [ext_resource type="Script" path="res://Scripts/immeuble.gd" id="1_5341l"]
+[ext_resource type="Texture2D" uid="uid://dx8xu082hwh6c" path="res://Assets/building.png" id="2_3pxaf"]
+[ext_resource type="PackedScene" uid="uid://dxkmktmcqacip" path="res://Scene/window.tscn" id="3_h01wi"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Immeuble" type="TextureRect"]
+texture = ExtResource("2_3pxaf")
 script = ExtResource("1_5341l")
 
-[node name="Immeuble" type="Sprite2D" parent="."]
-texture = ExtResource("1_0nvuj")
+[node name="E60" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 163.0
+offset_right = 157.0
+offset_bottom = 224.0
+
+[node name="E50" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 248.0
+offset_right = 157.0
+offset_bottom = 287.0
+
+[node name="E51" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 234.0
+offset_right = 402.0
+offset_bottom = 288.0
+
+[node name="E40" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 333.0
+offset_right = 155.0
+offset_bottom = 376.0
+
+[node name="E30" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 397.0
+offset_right = 171.0
+offset_bottom = 460.0
+
+[node name="E31" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 397.0
+offset_right = 402.0
+offset_bottom = 459.0
+
+[node name="E20" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 479.0
+offset_right = 164.0
+offset_bottom = 532.0
+
+[node name="E21" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 472.0
+offset_right = 404.0
+offset_bottom = 533.0
+
+[node name="E10" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 551.0
+offset_right = 158.0
+offset_bottom = 616.0
+
+[node name="E11" parent="." instance=ExtResource("3_h01wi")]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 550.0
+offset_right = 405.0
+offset_bottom = 615.0

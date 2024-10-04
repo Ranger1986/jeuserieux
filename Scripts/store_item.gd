@@ -1,6 +1,7 @@
 extends Control
 
 
+var id: int
 var image: TextureRect
 var name_desc: Label
 var stock_price: Label
@@ -15,21 +16,13 @@ func _ready() -> void:
 	stock_button = find_child("Stock")
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func give_parameters(info: Item) -> void:	
+	id = info.id
 	var img = Image.new()
-	var itex = ImageTexture.new()
 	img.load(info.imgPath)
-	print("Image dimensions:", img.get_width(), "x", img.get_height())
-	itex = itex.create_from_image(img)
+	var itex = ImageTexture.create_from_image(img)
 
-	image.texture = itex
-	print(image.size)
-	
+	image.texture = itex	
 	name_desc.text = info.nom + ":\n"
 	name_desc.text += "Lum: " + str(info.lumProt) + "\t"
 	name_desc.text += "Bruit: " + str(info.noiseProt) 

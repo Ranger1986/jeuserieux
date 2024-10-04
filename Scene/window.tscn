@@ -1,13 +1,29 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxkmktmcqacip"]
 
 [ext_resource type="Script" path="res://Scripts/foyer.gd" id="1_ydjkb"]
-[ext_resource type="Texture2D" uid="uid://bctyoqmohrfcb" path="res://Assets/window.jpg" id="2_qbgmt"]
-[ext_resource type="Script" path="res://Scripts/window.gd" id="3_jy1uo"]
 
-[node name="Window" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftegy"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcaoj"]
+bg_color = Color(1, 1, 0, 0.0392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 0, 0.941176)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Window" type="Button"]
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_ftegy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mcaoj")
 script = ExtResource("1_ydjkb")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_qbgmt")
-script = ExtResource("3_jy1uo")

@@ -1,7 +1,6 @@
 class_name Foyer
-extends Node2D
+extends Button
 
-var size
 var etage
 var numero
 
@@ -14,6 +13,8 @@ var luminosite
 var son
 var budget
 
+var items: Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	habitant = 1 + randi() % 2  # Random between 1 and 3
@@ -22,10 +23,9 @@ func _ready() -> void:
 	luminosite = randi() % 101 # Random between 0 and 100
 	son = randi() % 101  # Random between 0 and 100
 	budget = 100 +randi() % 101
+	pressed.connect(self._button_pressed)
 
-	pass # Replace with function body.
-
-func display_info() -> void:
+func _button_pressed():
 	label.text = "Appartement: " + name + "\n"
 	label.text += "Habitants:\n" + str(habitant) + "\n"
 	label.text += "Bonheur:\n" + str(happiness) + "%\n"

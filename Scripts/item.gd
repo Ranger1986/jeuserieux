@@ -13,26 +13,15 @@ var stock: int
 var hide: bool
 
 # Constructeur
-func _init(id: int, nom: String, imgPath: String, lumProt: int, noiseProt: int, priceStock: float, stock: int, hide: bool):
-	self.id = id
-	self.nom = nom
-	self.imgPath = imgPath
-	self.lumProt = lumProt
-	self.noiseProt = noiseProt
-	self.priceStock = priceStock
-	self.stock = stock
-	self.hide = hide
-
-# Fonction pour afficher les informations de l'item
-func print_info():
-	print("ID: ", id)
-	print("Nom: ", nom)
-	print("Image Path: ", imgPath)
-	print("Luminosité Protection: ", lumProt)
-	print("Bruit Protection: ", noiseProt)
-	print("Prix du Stock: ", priceStock)
-	print("Quantité en stock: ", stock)
-	print("Visible: ", !hide)
+func _init(p_id: int, p_nom: String, p_imgPath: String, p_lumProt: int, p_noiseProt: int, p_priceStock: float, p_stock: int, p_hide: bool):
+	id = p_id
+	nom = p_nom
+	imgPath = p_imgPath
+	lumProt = p_lumProt
+	noiseProt = p_noiseProt
+	priceStock = p_priceStock
+	stock = p_stock
+	hide = p_hide
 
 # Fonction statique pour lire le JSON et créer une liste d'items
 static func load_items_from_json(path: String) -> Array:

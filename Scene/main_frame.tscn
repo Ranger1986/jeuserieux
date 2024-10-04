@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://8wtls8bv34dx"]
+[gd_scene load_steps=7 format=3 uid="uid://8wtls8bv34dx"]
 
 [ext_resource type="Script" path="res://Scripts/start.gd" id="1_jrnpn"]
+[ext_resource type="Texture2D" uid="uid://cvxof0ajppkb4" path="res://Assets/background.png" id="2_21jfx"]
+[ext_resource type="Script" path="res://Scripts/ScrollAdapt.gd" id="2_dkngt"]
 [ext_resource type="PackedScene" uid="uid://j62pxnns4g6t" path="res://Scene/immeuble.tscn" id="2_noiyk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t2cfg"]
@@ -13,51 +15,52 @@ script/source = "extends Label
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 "
-
-[sub_resource type="Theme" id="Theme_527my"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jrnpn")
 
-[node name="Display" type="Polygon2D" parent="."]
-position = Vector2(1, 44)
-polygon = PackedVector2Array(0, 0, 250, 0, 250, 600, 0, 600)
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -280.0
+offset_top = -102.0
+offset_right = 680.0
+offset_bottom = 348.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_21jfx")
 
-[node name="DisplayLabel" type="Label" parent="Display"]
+[node name="Foyer" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 720)
+offset_right = 320.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
+
+[node name="DisplayLabel" type="Label" parent="Foyer"]
+layout_mode = 2
 offset_right = 40.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_t2cfg")
 script = SubResource("GDScript_sb3yv")
 
-[node name="Immeuble" parent="." instance=ExtResource("2_noiyk")]
-position = Vector2(580, 330)
-scale = Vector2(0.8, 0.8)
-
-[node name="Store" type="Polygon2D" parent="."]
-position = Vector2(900, 44)
-polygon = PackedVector2Array(0, 0, 250, 0, 250, 600, 0, 600)
+[node name="Store" type="ColorRect" parent="."]
+offset_left = 960.0
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Store"]
-custom_minimum_size = Vector2(300, 750)
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.8, 0.8)
+layout_mode = 0
+offset_top = 5.0
+offset_bottom = 5.0
+script = ExtResource("2_dkngt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Store/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
-theme = SubResource("Theme_527my")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 466.0
-offset_top = 2.0
-offset_right = 694.0
-offset_bottom = 25.0
-text = "Satisfation : 00% Budget:100$"
+[node name="Immeuble" parent="." instance=ExtResource("2_noiyk")]
+offset_left = 425.0
+offset_top = 104.0
+offset_right = 425.0
+offset_bottom = 104.0
+scale = Vector2(0.8, 0.8)
