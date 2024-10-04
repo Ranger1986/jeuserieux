@@ -11,4 +11,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if rect.has_point(get_local_mouse_position()):
-			owner.sell();
+			if Foyer.get_foyer_cible() != null:
+				owner.sell();
+			else:
+				print("Aucune cible")

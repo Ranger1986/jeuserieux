@@ -5,7 +5,7 @@
 	"imgPath": "res://Assets/placeholder.jpg",
 	"lumProt": 0,
 	"noiseProt": 0,
-	"priceStock": 0,
+	"priceStock": 500,
 	"stock": 0,
 	"hide": false
   },
@@ -15,7 +15,7 @@
 	"imgPath": "res://Assets/placeholder.jpg",
 	"lumProt": 0,
 	"noiseProt": 0,
-	"priceStock": 0,
+	"priceStock": 700,
 	"stock": 0,
 	"hide": true
   },
@@ -25,7 +25,7 @@
 	"imgPath": "res://Assets/placeholder.jpg",
 	"lumProt": 0,
 	"noiseProt": 0,
-	"priceStock": 0,
+	"priceStock": 300,
 	"stock": 0,
 	"hide": false
   }
