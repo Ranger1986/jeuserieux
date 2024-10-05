@@ -65,9 +65,16 @@ offset_right = 425.0
 offset_bottom = 104.0
 scale = Vector2(0.8, 0.8)
 
+[node name="Bonheur" type="Label" parent="."]
+offset_left = 366.0
+offset_top = 4.0
+offset_right = 594.0
+offset_bottom = 27.0
+text = "Satisfation : 00% "
+
 [node name="Budget_player" type="Label" parent="."]
-offset_left = 466.0
-offset_top = 2.0
-offset_right = 694.0
-offset_bottom = 25.0
-text = "Satisfation : 00% Budget:100$"
+offset_left = 708.0
+offset_top = 4.0
+offset_right = 936.0
+offset_bottom = 27.0
+text = "Budget:100$"
