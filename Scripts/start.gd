@@ -43,8 +43,10 @@ func _process(delta: float) -> void:
 # slot (s'appelle lors de la réception du signal), modifie le budget du joueur
 func _on_budget_modified(amount: float) -> void:
 	if budget_player + amount >= 0 :
+		show_popup("Budget modifié de " + str(amount), get_viewport().get_mouse_position())
 		modify_budget(amount)
 	else :
+		show_popup("Budget insuffisant", get_viewport().get_mouse_position())
 		print("Budget insufisant")
 	
 # fonction appellée par le slot (joueur)
@@ -67,3 +69,16 @@ func modify_budget_foyer(amount: float) -> void:
 func _on_refresh_display_foyer() -> void:
 	var cible = Foyer.get_foyer_cible()
 	cible.display_info()
+
+func show_popup(message: String, start_position: Vector2) -> void:
+	var popup_label = $Popup_label
+	var anim_player = $Popup_AnimationPlayer
+	
+	# Set the label text and initial position
+	popup_label.text = message
+	popup_label.position = start_position
+	popup_label.visible = true
+	popup_label.modulate.a = 1.0 # Reset opacity to 100%
+
+	# Play the animation to slide up and fade out
+	anim_player.play("popup_animation")
