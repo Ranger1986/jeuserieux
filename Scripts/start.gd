@@ -42,7 +42,11 @@ func _process(delta: float) -> void:
 
 # slot (s'appelle lors de la réception du signal)
 func _on_budget_modified(amount: float) -> void:
-	modify_budget(amount)
+	if budget_player + amount >= 0 :
+		modify_budget(amount)
+	else :
+		print("Budget insufisant")
+	
 
 func modify_budget(amount: float) -> void:
 	budget_player += amount
