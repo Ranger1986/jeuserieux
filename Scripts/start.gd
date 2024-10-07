@@ -40,20 +40,26 @@ func _process(delta: float) -> void:
 	bonheur_label.text = "Bonheur: " + str(Foyer.get_bonheur_moyen()) + "%"
 	pass
 
-# slot (s'appelle lors de la réception du signal)
+# slot (s'appelle lors de la réception du signal), modifie le budget du joueur
 func _on_budget_modified(amount: float) -> void:
 	if budget_player + amount >= 0 :
 		modify_budget(amount)
 	else :
 		print("Budget insufisant")
 	
-
+# fonction appellée par le slot (joueur)
 func modify_budget(amount: float) -> void:
 	budget_player += amount
 
+# slot (s'appelle lors de la réception du signal), modifie le budget du foyer
 func _on_modify_budget_foyer(amount: float) -> void:
-	modify_budget_foyer(amount)
-	
+	var target = Foyer.get_foyer_cible()
+	if target.get_budget() + amount >= 0 :
+		modify_budget_foyer(amount)
+	else :
+		print("Budget du foyer insufisant")
+
+# fonction appellée par le slot (foyer)
 func modify_budget_foyer(amount: float) -> void:
 	var target = Foyer.get_foyer_cible()
 	target.add_money(amount)
