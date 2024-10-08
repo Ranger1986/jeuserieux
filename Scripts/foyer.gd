@@ -63,12 +63,18 @@ static func set_cible(cible: Foyer) -> void:
 func add_money(amount: float) -> void:
 	budget += amount
 
-func get_budget() -> float:
-	return budget
-
-static func get_bonheur_moyen()->int:
+static func get_bonheur_moyen() -> int:
 	var moyenne : float = 0
-	for foyer : Foyer in liste_foyer:
-		moyenne+=foyer.bonheur
-	moyenne/=liste_foyer.size()
+	var valid_foyer_count = 0
+
+	for foyer in liste_foyer:
+		if is_instance_valid(foyer):
+			moyenne += foyer.bonheur
+			valid_foyer_count += 1
+			
+	if valid_foyer_count > 0:
+		moyenne /= valid_foyer_count 
+	else:
+		moyenne = 0
+
 	return int(moyenne)

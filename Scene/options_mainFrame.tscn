@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dadaqj1qxrqn0"]
+[gd_scene load_steps=4 format=3 uid="uid://bukgosvgawwfj"]
 
-[ext_resource type="Script" path="res://Options.gd" id="1_7tw5h"]
-[ext_resource type="Texture2D" uid="uid://bnwp508uo0v0f" path="res://Assets/sunLow.png" id="2_gg5oo"]
-[ext_resource type="FontFile" uid="uid://b6ocg4l0krikr" path="res://Assets/Pixeled.ttf" id="2_q2pju"]
+[ext_resource type="Script" path="res://Scripts/Options_mainFrame.gd" id="1_m8q8d"]
+[ext_resource type="Texture2D" uid="uid://biy0o1m2jraea" path="res://Assets/day.png" id="2_mou4t"]
+[ext_resource type="FontFile" uid="uid://b6ocg4l0krikr" path="res://Assets/Pixeled.ttf" id="3_ktbyw"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7tw5h")
+script = ExtResource("1_m8q8d")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,7 +24,7 @@ offset_right = 512.0
 offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gg5oo")
+texture = ExtResource("2_mou4t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,7 +46,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_fonts/font = ExtResource("3_ktbyw")
 theme_override_font_sizes/font_size = 25
 text = "Graphismes"
 horizontal_alignment = 1
@@ -68,7 +68,7 @@ popup/item_1/text = "1600 x 900"
 popup/item_1/id = 1
 popup/item_2/text = "1280x720"
 popup/item_2/id = 2
-script = ExtResource("1_7tw5h")
+script = ExtResource("1_m8q8d")
 
 [node name="OptionButton2" type="OptionButton" parent="VBoxContainer/VBoxContainerVideo"]
 layout_mode = 2
@@ -79,7 +79,7 @@ item_count = 2
 popup/item_0/text = "Plein écran"
 popup/item_1/text = "Fenêtré"
 popup/item_1/id = 3
-script = ExtResource("1_7tw5h")
+script = ExtResource("1_m8q8d")
 
 [node name="VBoxContainerAudio" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -88,7 +88,7 @@ theme_override_constants/separation = 45
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainerAudio"]
 layout_mode = 2
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_fonts/font = ExtResource("3_ktbyw")
 theme_override_font_sizes/font_size = 25
 text = "Audio"
 horizontal_alignment = 1
@@ -106,16 +106,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_fonts/font = ExtResource("3_ktbyw")
 theme_override_font_sizes/font_size = 15
 text = "Muet"
-script = ExtResource("1_7tw5h")
+script = ExtResource("1_m8q8d")
 
 [node name="Label4" type="Label" parent="VBoxContainer/VBoxContainerAudio"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_fonts/font = ExtResource("3_ktbyw")
 theme_override_font_sizes/font_size = 15
 text = "Volume du son :"
 horizontal_alignment = 1
@@ -138,9 +138,19 @@ offset_right = 115.0
 offset_bottom = 702.0
 size_flags_horizontal = 0
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("2_q2pju")
+theme_override_fonts/font = ExtResource("3_ktbyw")
 text = "Retour"
-script = ExtResource("1_7tw5h")
+script = ExtResource("1_m8q8d")
+
+[node name="Button2" type="Button" parent="Node2D"]
+offset_left = 1028.0
+offset_top = 648.0
+offset_right = 1264.0
+offset_bottom = 702.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_ktbyw")
+text = "Quitter la partie"
+script = ExtResource("1_m8q8d")
 
 [connection signal="item_selected" from="VBoxContainer/VBoxContainerVideo/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/VBoxContainerVideo/OptionButton2" to="." method="_on_option_button_2_item_selected"]
@@ -148,3 +158,4 @@ script = ExtResource("1_7tw5h")
 [connection signal="value_changed" from="VBoxContainer/VBoxContainerAudio/Label4/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Node2D/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Node2D/Button" to="Node2D/Button" method="_on_pressed"]
+[connection signal="pressed" from="Node2D/Button2" to="." method="_on_button_2_pressed"]

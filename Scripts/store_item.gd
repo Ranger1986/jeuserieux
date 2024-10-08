@@ -38,7 +38,7 @@ func give_parameters(info: Item) -> void:
 	display()
 func display():
 	name_desc.text = item.nom + ":\n"
-	name_desc.text += "Lum: " + str(item.lumProt) + "\t"
+	name_desc.text += "Lum: " + str(item.lumProt) + "     "
 	name_desc.text += "Bruit: " + str(item.noiseProt) 
 	stock_price.text = str(item.priceStock) + "$\nx" + str(stockAmount)
 func sell():
