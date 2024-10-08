@@ -7,6 +7,7 @@ const BESOIN_FLOOR = 60
 var etage
 var numero
 var label : Label
+var image_personnage : TextureRect  # Déclaration du noeud TextureRect pour afficher le personnage
 
 var habitant
 var bonheur : float
@@ -17,6 +18,7 @@ var budget
 
 var items: Array
 static var foyer_cible
+var image_path : String  # Chemin de l'image du personnage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,6 +30,9 @@ func _ready() -> void:
 	budget = 100 + randi() % 101
 	pressed.connect(self._button_pressed)
 	liste_foyer.append(self)
+	image_personnage = $foyer_personnage
+	# à changer avec str(etage + numero) quand j'aurai plus d'images
+	image_path = "res://Assets/personnage_" + str(numero) + ".png" 
 func _process(delta: float) -> void:
 	var besoin_facteur = 0
 	if luminosite<BESOIN_FLOOR:
@@ -43,6 +48,7 @@ func _process(delta: float) -> void:
 func _button_pressed():
 	Foyer.set_cible(self)
 	display_info()
+	display_image() # Fonction pour afficher l'image dès le bouton pressé
 	
 func display_info():
 	label.text = "Appartement: " + name + "\n"
@@ -52,6 +58,18 @@ func display_info():
 	label.text += "Luminosité:\n" + str(luminosite) + "%\n"
 	label.text += "Sonorité:\n" + str(son) + "%\n"
 	label.text += "Budget:\n" + str(budget) + "$\n"
+	
+func display_image():
+	var img_texture = load(image_path) # Charge l'image comme une texture
+	print("image chargé?")
+	if img_texture:
+		# Assigne la texture à la TextureRect
+		image_personnage.texture = img_texture 
+		print("Image affichée : ", image_path)  # Message de débogage pour vérifier le chemin
+	else:
+		print("Erreur de chargement de l'image : ", image_path)  # Vérifie si l'image est chargée
+		# Erreur de chargement de l'image : res://Assets/personnage_<null>.png
+	
 
 # Fonction pour récupérer la liste des foyers (accessible a tous)
 static func get_foyer_cible() -> Foyer:
