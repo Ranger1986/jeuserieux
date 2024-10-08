@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 AudioManager="*res://Scene/audio_manager.tscn"
+GlobalPopup="*res://Scripts/popup.gd"
 
 [display]
 

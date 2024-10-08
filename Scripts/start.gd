@@ -42,10 +42,12 @@ func _process(delta: float) -> void:
 ## slot (s'appelle lors de la réception du signal), modifie le budget du joueur
 func _on_stock(store_item: StoreItem) -> void:
 	if budget_player - store_item.item.priceStock >= 0 :
+		GlobalPopup.show_popup(str(store_item.item.priceStock)+"$", get_viewport().get_mouse_position(), 0)
 		budget_player -= store_item.item.priceStock
 		store_item.stockAmount+=1
 		store_item.display()
 	else :
+		GlobalPopup.show_popup("Budget insuffisant", get_viewport().get_mouse_position(), 0)
 		print("Budget insufisant")
 func _on_sell(store_item: StoreItem) -> void:
 	var target = Foyer.get_foyer_cible()

@@ -14,4 +14,5 @@ func _input(event: InputEvent) -> void:
 			if Foyer.get_foyer_cible() != null:
 				owner.sell();
 			else:
+				GlobalPopup.show_popup("Aucune cible", get_viewport().get_mouse_position(), 0)
 				print("Aucune cible")
