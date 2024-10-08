@@ -33,4 +33,7 @@ func _on_option_button_2_item_selected(index: int) -> void:
 			$VBoxContainer/VBoxContainerVideo/OptionButton.visible = true
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://menu.tscn")
+	get_tree().change_scene_to_file("res://Scene/main_frame.tscn")
+
+func _on_button_2_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scene/menu.tscn")

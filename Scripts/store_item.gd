@@ -30,11 +30,10 @@ func give_parameters(info: Item) -> void:
 
 	image.texture = itex	
 	name_desc.text = info.nom + ":\n"
-	name_desc.text += "Lum: " + str(info.lumProt) + "\t"
-	name_desc.text += "Bruit: " + str(info.noiseProt) 
+	name_desc.text += "Lum: " + str(info.lumProt) + "     "
+	name_desc.text += "Bruit: " + str(info.noiseProt)
 	stock_price.text = str(info.priceStock) + "$\nx" + str(info.stock)
 	priceStock = info.priceStock
-	
 	
 	if info.hide:
 		hide();

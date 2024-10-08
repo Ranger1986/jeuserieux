@@ -57,3 +57,7 @@ func modify_budget_foyer(amount: float) -> void:
 func _on_refresh_display_foyer() -> void:
 	var cible = Foyer.get_foyer_cible()
 	cible.display_info()
+	
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		get_tree().change_scene_to_file("res://Scene/options_mainFrame.tscn")
