@@ -38,7 +38,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	budget_player_label.text = "Budget: " + str(budget_player)
 	bonheur_label.text = "Bonheur: " + str(Foyer.get_bonheur_moyen()) + "%"
-	pass
+	if Input.is_key_pressed(KEY_D):
+		print_tree()
 
 # slot (s'appelle lors de la réception du signal)
 func _on_budget_modified(amount: float) -> void:

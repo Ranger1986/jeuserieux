@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c80fy286kxlia"]
+[gd_scene load_steps=7 format=3 uid="uid://c80fy286kxlia"]
 
 [ext_resource type="Script" path="res://Scripts/store_item.gd" id="1_f3p11"]
 [ext_resource type="Script" path="res://Scripts/sell.gd" id="2_6d7d8"]
+[ext_resource type="Texture2D" uid="uid://dn4sxh2i2c603" path="res://Assets/parchemin.png" id="2_adq85"]
 [ext_resource type="Script" path="res://Scripts/stock.gd" id="3_uicns"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vw8v"]
@@ -20,14 +21,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f3p11")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(300, 100)
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0, 0, 1)
+offset_right = 300.0
+offset_bottom = 100.0
+texture = ExtResource("2_adq85")
+expand_mode = 1
 
-[node name="Image" type="TextureRect" parent="ColorRect"]
+[node name="Image" type="TextureRect" parent="TextureRect"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 0
 offset_left = 12.5
@@ -36,7 +37,7 @@ offset_right = 87.5
 offset_bottom = 87.5
 expand_mode = 1
 
-[node name="NameDesc" type="Label" parent="ColorRect"]
+[node name="NameDesc" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 10.0
@@ -46,7 +47,7 @@ text = "NOM:
 description"
 label_settings = SubResource("LabelSettings_4vw8v")
 
-[node name="StockPrice" type="Label" parent="ColorRect"]
+[node name="StockPrice" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 203.0
 offset_top = 10.0
@@ -57,7 +58,7 @@ text = "x10
 label_settings = SubResource("LabelSettings_qwy1q")
 horizontal_alignment = 2
 
-[node name="Sell" type="Button" parent="ColorRect"]
+[node name="Sell" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(85, 25)
 layout_mode = 0
 offset_left = 103.0
@@ -67,7 +68,7 @@ offset_bottom = 95.0
 text = "Vendre"
 script = ExtResource("2_6d7d8")
 
-[node name="Stock" type="Button" parent="ColorRect"]
+[node name="Stock" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(85, 25)
 layout_mode = 0
 offset_left = 200.0
