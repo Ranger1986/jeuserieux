@@ -55,6 +55,8 @@ offset_left = 366.0
 offset_top = 4.0
 offset_right = 594.0
 offset_bottom = 27.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Satisfation : 00% "
 
 [node name="Budget_player" type="Label" parent="."]
@@ -62,6 +64,8 @@ offset_left = 708.0
 offset_top = 4.0
 offset_right = 936.0
 offset_bottom = 27.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Budget:100$"
 
 [node name="Foyer" type="TextureRect" parent="."]
@@ -71,8 +75,10 @@ texture = ExtResource("5_8ns8c")
 
 [node name="DisplayLabel" type="Label" parent="Foyer"]
 layout_mode = 2
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 17.0
+offset_top = 22.0
+offset_right = 57.0
+offset_bottom = 45.0
 label_settings = SubResource("LabelSettings_t2cfg")
 script = SubResource("GDScript_sb3yv")
 
