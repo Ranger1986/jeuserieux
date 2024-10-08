@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8wtls8bv34dx"]
+[gd_scene load_steps=7 format=3 uid="uid://8wtls8bv34dx"]
 
 [ext_resource type="Script" path="res://Scripts/start.gd" id="1_jrnpn"]
 [ext_resource type="Texture2D" uid="uid://cvxof0ajppkb4" path="res://Assets/background.png" id="2_21jfx"]
@@ -16,38 +16,6 @@ script/source = "extends Label
 func _ready() -> void:
 	pass # Replace with function body.
 "
-
-[sub_resource type="Animation" id="Animation_u5ys1"]
-resource_name = "Popup_fadeout"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Popup_label:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Popup_label:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_llbaa"]
-_data = {
-"Popup_fadeout": SubResource("Animation_u5ys1")
-}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_jrnpn")
@@ -110,12 +78,3 @@ offset_top = 4.0
 offset_right = 936.0
 offset_bottom = 27.0
 text = "Budget:100$"
-
-[node name="Popup_label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Popup_AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_llbaa")
-}
