@@ -28,10 +28,8 @@ func _ready() -> void:
 		instance.name="item"+str(item.id)
 		instance.give_parameters(item)
 		instance.owner=self
-		instance.connect("budget_modified_signal", Callable(self, "_on_budget_modified"))
-		instance.connect("budget_foyer_modified_signal", Callable(self, "_on_modify_budget_foyer"))
-		instance.connect("refresh_display_foyer_signal", Callable(self, "_on_refresh_display_foyer"))
-	pass # Replace with function body.
+		instance.connect("sell_signal", Callable(self, "_on_sell"))
+		instance.connect("stock_signal", Callable(self, "_on_stock"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,30 +39,15 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_D):
 		print_tree()
 
-# slot (s'appelle lors de la réception du signal), modifie le budget du joueur
-func _on_budget_modified(amount: float) -> void:
-	if budget_player + amount >= 0 :
-		modify_budget(amount)
+## slot (s'appelle lors de la réception du signal), modifie le budget du joueur
+func _on_stock(store_item: StoreItem) -> void:
+	if budget_player - store_item.item.priceStock >= 0 :
+		budget_player -= store_item.item.priceStock
+		store_item.stockAmount+=1
+		store_item.display()
 	else :
 		print("Budget insufisant")
-	
-# fonction appellée par le slot (joueur)
-func modify_budget(amount: float) -> void:
-	budget_player += amount
-
-# slot (s'appelle lors de la réception du signal), modifie le budget du foyer
-func _on_modify_budget_foyer(amount: float) -> void:
+func _on_sell(store_item: StoreItem) -> void:
 	var target = Foyer.get_foyer_cible()
-	if target.get_budget() + amount >= 0 :
-		modify_budget_foyer(amount)
-	else :
-		print("Budget du foyer insufisant")
-
-# fonction appellée par le slot (foyer)
-func modify_budget_foyer(amount: float) -> void:
-	var target = Foyer.get_foyer_cible()
-	target.add_money(amount)
-
-func _on_refresh_display_foyer() -> void:
-	var cible = Foyer.get_foyer_cible()
-	cible.display_info()
+	if target != null:
+		pass

@@ -1,17 +1,21 @@
+class_name StoreItem
 extends Control
 
 
-var id: int
+var item: Item
+
+var stockAmount: int
+
 var image: TextureRect
+
 var name_desc: Label
 var stock_price: Label
+
 var sell_button: Button
 var stock_button: Button
-var priceStock: float
 
-signal budget_modified_signal(amount: float)
-signal budget_foyer_modified_signal(amount: float)
-signal refresh_display_foyer_signal()
+signal sell_signal(item: StoreItem)
+signal stock_signal(item: StoreItem)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,29 +26,23 @@ func _ready() -> void:
 	stock_button = find_child("Stock")
 	pass # Replace with function body.
 
-func give_parameters(info: Item) -> void:	
-	id = info.id
+func give_parameters(info: Item) -> void:
+	item=info
 	var img = Image.new()
-	img.load(info.imgPath)
+	img.load(item.imgPath)
 	var itex = ImageTexture.create_from_image(img)
-
 	image.texture = itex	
-	name_desc.text = info.nom + ":\n"
-	name_desc.text += "Lum: " + str(info.lumProt) + "\t"
-	name_desc.text += "Bruit: " + str(info.noiseProt) 
-	stock_price.text = str(info.priceStock) + "$\nx" + str(info.stock)
-	priceStock = info.priceStock
-	
-	
-	if info.hide:
+	stockAmount=0
+	if item.hide:
 		hide();
-		
+	display()
+func display():
+	name_desc.text = item.nom + ":\n"
+	name_desc.text += "Lum: " + str(item.lumProt) + "\t"
+	name_desc.text += "Bruit: " + str(item.noiseProt) 
+	stock_price.text = str(item.priceStock) + "$\nx" + str(stockAmount)
 func sell():
-	emit_signal("budget_modified_signal", priceStock)
-	emit_signal("budget_foyer_modified_signal", -priceStock)
-	emit_signal("refresh_display_foyer_signal")
-	print("sell")
+	emit_signal("sell_signal", self)
 	
 func stock():
-	emit_signal("budget_modified_signal", -priceStock)
-	print("stock")
+	emit_signal("stock_signal", self)
