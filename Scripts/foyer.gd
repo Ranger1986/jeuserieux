@@ -63,6 +63,9 @@ static func set_cible(cible: Foyer) -> void:
 func add_money(amount: float) -> void:
 	budget += amount
 
+func get_budget() -> float:
+	return budget
+
 static func get_bonheur_moyen()->int:
 	var moyenne : float = 0
 	for foyer : Foyer in liste_foyer:
