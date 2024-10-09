@@ -59,7 +59,11 @@ func _on_stock(store_item: StoreItem) -> void:
 	else :
 		GlobalPopup.show_popup("Budget insuffisant", get_viewport().get_mouse_position(), 0)
 		print("Budget insufisant")
+
 func _on_sell(store_item: StoreItem) -> void:
+	if store_item.stockAmount == 0:
+		GlobalPopup.show_popup("Stock insuffisant", get_viewport().get_mouse_position(), 0)
+		return
 	var target = Foyer.get_foyer_cible()
 	if target != null:
 		var instance = preload("res://Scene/marchandage.tscn").instantiate()

@@ -4,5 +4,6 @@ extends TextureRect
 func _ready() -> void:
 	var display = owner.find_child("DisplayLabel")
 	for window in get_children():
-		window.label = display
+		if window is Button:
+			window.label = display
 		
