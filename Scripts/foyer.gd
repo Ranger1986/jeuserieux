@@ -41,15 +41,6 @@ func _process(delta: float) -> void:
 	bonheur = max(min(bonheur,100),0)
 func _button_pressed():
 	Foyer.set_cible(self)
-	display_info()
-	
-func display_info():
-	label.text = "Appartement: " + name + "\n"
-	label.text += "Habitants:\n" + str(habitant) + "\n"
-	label.text += "Bonheur:\n" + str(int(bonheur)) + "%\n"
-	label.text += "Luminosité:\n" + str(luminosite) + "%\n"
-	label.text += "Sonorité:\n" + str(son) + "%\n"
-	label.text += "Budget:\n" + str(budget) + "$\n"
 
 # Fonction pour récupérer la liste des foyers (accessible a tous)
 static func get_foyer_cible() -> Foyer:

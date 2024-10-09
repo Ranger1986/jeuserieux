@@ -33,13 +33,21 @@ func _ready() -> void:
 	
 		
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func display_foyer():
+	var foyer = Foyer.foyer_cible
+	find_child("AptLabel").text="Appartement: " + str(foyer.name)
+	find_child("HabLabel").text="Habitant: " + str(foyer.habitant)
+	find_child("BonBar").value = foyer.bonheur
+	find_child("LumBar").value = foyer.luminosite
+	find_child("SonBar").value = foyer.son
+	find_child("BudLabel").text="Budget: " + str(foyer.budget) +"$"
 func _process(_delta: float) -> void:
 	budget_player_label.text = "Budget: " + str(budget_player)
 	bonheur_label.text = "Bonheur: " + str(Foyer.get_bonheur_moyen()) + "%"
 	if Input.is_key_pressed(KEY_D):
 		find_children("Control")[0].print_tree()
+	if Foyer.foyer_cible != null:
+		display_foyer()
 
 ## slot (s'appelle lors de la réception du signal), modifie le budget du joueur
 func _on_stock(store_item: StoreItem) -> void:
