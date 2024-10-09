@@ -1,7 +1,6 @@
 class_name StoreItem
 extends Control
 
-
 var item: Item
 
 var stockAmount: int

@@ -52,7 +52,9 @@ func _on_stock(store_item: StoreItem) -> void:
 func _on_sell(store_item: StoreItem) -> void:
 	var target = Foyer.get_foyer_cible()
 	if target != null:
-		pass
+		target.luminosite = max(target.luminosite - store_item.item.lumProt, 0) # Update des lumières
+		target.son = max(target.son - store_item.item.noiseProt, 0) # Update des sons
+		target.display_info()
 
 func _on_refresh_display_foyer() -> void:
 	var cible = Foyer.get_foyer_cible()
