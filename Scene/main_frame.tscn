@@ -84,6 +84,8 @@ text = "Bonheur:"
 [node name="BonBar" type="ProgressBar" parent="FoyerDisplay/FoyerContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+allow_greater = true
+allow_lesser = true
 show_percentage = false
 
 [node name="LumLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]

@@ -65,7 +65,6 @@ func _on_sell(store_item: StoreItem) -> void:
 		var instance = preload("res://Scene/marchandage.tscn").instantiate()
 		add_child(instance)
 		instance.position= (Vector2(1280,720) - instance.get_child(0).size) /2
-		instance.set_item(store_item.item)
 		instance.connect("sell_end_signal", Callable(self, "_end_sell"))
 
 func _on_refresh_display_foyer() -> void:
@@ -74,6 +73,8 @@ func _on_refresh_display_foyer() -> void:
 	
 func _end_sell(item: Item, price:int):
 	Foyer.foyer_cible.bonheur = min(max(Foyer.foyer_cible.bonheur + (item.priceStock-price )/item.priceStock * 100,0),100)
+	Foyer.foyer_cible.luminosite = max(Foyer.foyer_cible.luminosite - item.lumProt, 0) # Update des lumières
+	Foyer.foyer_cible.son = max(Foyer.foyer_cible.son - item.noiseProt, 0) # Update des sons
 	Foyer.foyer_cible.budget -= price
 	budget_player+=price
 	
