@@ -5,7 +5,7 @@
 	"imgPath": "res://Assets/placeholder.jpg",
 	"lumProt": 0,
 	"noiseProt": 0,
-	"priceStock": 9.90,
+	"priceStock": 10,
 	"stock": 0,
 	"hide": false
   },
@@ -15,7 +15,7 @@
 	"imgPath": "res://Assets/placeholder.jpg",
 	"lumProt": 0,
 	"noiseProt": 0,
-	"priceStock": 17.90,
+	"priceStock": 18,
 	"stock": 0,
 	"hide": false
   },

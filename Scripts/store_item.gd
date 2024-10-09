@@ -13,7 +13,6 @@ var stock_price: Label
 
 var sell_button: Button
 var stock_button: Button
-
 signal sell_signal(item: StoreItem)
 signal stock_signal(item: StoreItem)
 

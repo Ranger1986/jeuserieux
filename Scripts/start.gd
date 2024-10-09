@@ -1,6 +1,6 @@
 extends Node2D
 
-var budget_player: float
+var budget_player: int
 var budget_player_label: Label
 var bonheur_label: Label
 
@@ -30,14 +30,16 @@ func _ready() -> void:
 		instance.owner=self
 		instance.connect("sell_signal", Callable(self, "_on_sell"))
 		instance.connect("stock_signal", Callable(self, "_on_stock"))
+	
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	budget_player_label.text = "Budget: " + str(budget_player)
 	bonheur_label.text = "Bonheur: " + str(Foyer.get_bonheur_moyen()) + "%"
 	if Input.is_key_pressed(KEY_D):
-		print_tree()
+		find_children("Control")[0].print_tree()
 
 ## slot (s'appelle lors de la réception du signal), modifie le budget du joueur
 func _on_stock(store_item: StoreItem) -> void:
@@ -52,11 +54,21 @@ func _on_stock(store_item: StoreItem) -> void:
 func _on_sell(store_item: StoreItem) -> void:
 	var target = Foyer.get_foyer_cible()
 	if target != null:
-		pass
+		var instance = preload("res://Scene/marchandage.tscn").instantiate()
+		add_child(instance)
+		instance.position= (Vector2(1280,720) - instance.get_child(0).size) /2
+		instance.set_item(store_item.item)
+		instance.connect("sell_end_signal", Callable(self, "_end_sell"))
 
 func _on_refresh_display_foyer() -> void:
 	var cible = Foyer.get_foyer_cible()
 	cible.display_info()
+	
+func _end_sell(item: Item, price:int):
+	Foyer.foyer_cible.bonheur += (item.priceStock-price )/item.priceStock * 100
+	Foyer.foyer_cible.budget -= price
+	Foyer.foyer_cible.display_info()
+	budget_player+=price
 	
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
