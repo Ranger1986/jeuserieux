@@ -65,7 +65,7 @@ func _on_refresh_display_foyer() -> void:
 	cible.display_info()
 	
 func _end_sell(item: Item, price:int):
-	Foyer.foyer_cible.bonheur += (item.priceStock-price )/item.priceStock * 100
+	Foyer.foyer_cible.bonheur = min(max(Foyer.foyer_cible.bonheur + (item.priceStock-price )/item.priceStock * 100,0),100)
 	Foyer.foyer_cible.budget -= price
 	Foyer.foyer_cible.display_info()
 	budget_player+=price
