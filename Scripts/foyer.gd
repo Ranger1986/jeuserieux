@@ -28,6 +28,7 @@ func _ready() -> void:
 	budget = 100 + randi() % 101
 	pressed.connect(self._button_pressed)
 	liste_foyer.append(self)
+
 func _process(delta: float) -> void:
 	var besoin_facteur = 0
 	if luminosite<BESOIN_FLOOR:
@@ -40,6 +41,11 @@ func _process(delta: float) -> void:
 		besoin_facteur+=luminosite-BESOIN_CEIL
 	bonheur+=bonheur*besoin_facteur/100*delta
 	bonheur = max(min(bonheur,100),0)
+	if(bonheur < 50):
+		get_children()[0].show()
+		var anim_player = get_node("animation_texte_bulle")
+		anim_player.play("idle")
+		
 func _button_pressed():
 	Foyer.set_cible(self)
 	display_info()
