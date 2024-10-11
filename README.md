@@ -12,7 +12,7 @@ Etudiants:
 - Evan COMBOT
 - Pierre RICHARD
 
-Date: 18 Septembre - 30 Octobre
+Date: 18 Septembre 2024 - 30 Octobre 2024
 
 ## Gameplay
 
