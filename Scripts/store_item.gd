@@ -47,13 +47,13 @@ func give_parameters(info: Item) -> void:
 	else:	
 		icone_power_light.texture = load("res://Assets/down2.png")
 		
-	if(item.noiseProt <= 12.5):
+	if(item.noiseProt <= -12.5):
 		icone_power_sound.texture = load("res://Assets/up2.png")
 	else: if(item.noiseProt < 0):
 		icone_power_sound.texture = load("res://Assets/up1.png")
 	else: if(item.noiseProt == 0):
 		icone_power_sound.texture = load("res://Assets/neutre.png")
-	else: if(item.noiseProt >= 25):
+	else: if(item.noiseProt <= 12.5):
 		icone_power_sound.texture = load("res://Assets/down1.png")
 	else:	
 		icone_power_sound.texture = load("res://Assets/down2.png")
