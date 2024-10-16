@@ -89,7 +89,7 @@ offset_bottom = 61.0
 [node name="light_icon" type="TextureRect" parent="TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 texture = ExtResource("5_4rx2a")
 expand_mode = 3
 
@@ -102,7 +102,7 @@ expand_mode = 3
 [node name="sound_icon" type="TextureRect" parent="TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 texture = ExtResource("6_7k0gl")
 expand_mode = 3
 
