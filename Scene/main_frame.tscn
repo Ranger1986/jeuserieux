@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://8wtls8bv34dx"]
+[gd_scene load_steps=9 format=3 uid="uid://8wtls8bv34dx"]
 
 [ext_resource type="Script" path="res://Scripts/start.gd" id="1_jrnpn"]
 [ext_resource type="Texture2D" uid="uid://cvxof0ajppkb4" path="res://Assets/background.png" id="2_21jfx"]
 [ext_resource type="Script" path="res://Scripts/ScrollAdapt.gd" id="2_dkngt"]
 [ext_resource type="PackedScene" uid="uid://j62pxnns4g6t" path="res://Scene/immeuble.tscn" id="2_noiyk"]
+[ext_resource type="LabelSettings" uid="uid://bgwsbx7eh8akm" path="res://Assets/blackFont.tres" id="5_4k1jm"]
 [ext_resource type="Texture2D" uid="uid://dn4sxh2i2c603" path="res://Assets/parchemin.png" id="5_8ns8c"]
+[ext_resource type="Script" path="res://Scripts/bar.gd" id="6_pco5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t2cfg"]
 font_color = Color(0, 0, 0, 1)
@@ -27,14 +29,14 @@ offset_right = 425.0
 offset_bottom = 104.0
 scale = Vector2(0.8, 0.8)
 
-[node name="Bonheur" type="Label" parent="."]
+[node name="Bonheur" type="ProgressBar" parent="."]
 offset_left = 366.0
 offset_top = 4.0
 offset_right = 594.0
-offset_bottom = 27.0
+offset_bottom = 31.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "Satisfation : 00% "
+script = ExtResource("6_pco5y")
 
 [node name="Budget_player" type="Label" parent="."]
 offset_left = 708.0
@@ -69,10 +71,12 @@ offset_bottom = 700.0
 [node name="AptLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
 text = "Appartement:"
+label_settings = ExtResource("5_4k1jm")
 
 [node name="HabLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
 text = "Habitant:"
+label_settings = ExtResource("5_4k1jm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
@@ -80,6 +84,7 @@ layout_mode = 2
 [node name="BonLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
 text = "Bonheur:"
+label_settings = ExtResource("5_4k1jm")
 
 [node name="BonBar" type="ProgressBar" parent="FoyerDisplay/FoyerContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -87,28 +92,34 @@ layout_mode = 2
 allow_greater = true
 allow_lesser = true
 show_percentage = false
+script = ExtResource("6_pco5y")
 
 [node name="LumLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
 text = "Luminosité:"
+label_settings = ExtResource("5_4k1jm")
 
 [node name="LumBar" type="ProgressBar" parent="FoyerDisplay/FoyerContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 show_percentage = false
+script = ExtResource("6_pco5y")
 
 [node name="SonLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
 text = "Sonorité:"
+label_settings = ExtResource("5_4k1jm")
 
 [node name="SonBar" type="ProgressBar" parent="FoyerDisplay/FoyerContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 show_percentage = false
+script = ExtResource("6_pco5y")
 
 [node name="BudLabel" type="Label" parent="FoyerDisplay/FoyerContainer"]
 layout_mode = 2
 text = "Budget:"
+label_settings = ExtResource("5_4k1jm")
 
 [node name="Store" type="TextureRect" parent="."]
 offset_left = 960.0
