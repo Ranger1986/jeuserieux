@@ -128,3 +128,12 @@ script = ExtResource("2_dkngt")
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 360.0
+offset_top = 34.0
+offset_right = 885.0
+offset_bottom = 100.0
+
+[connection signal="focus_entered" from="Label" to="Label" method="_on_focus_entered"]
