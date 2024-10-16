@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c80fy286kxlia"]
+[gd_scene load_steps=9 format=3 uid="uid://c80fy286kxlia"]
 
 [ext_resource type="Script" path="res://Scripts/store_item.gd" id="1_f3p11"]
 [ext_resource type="Script" path="res://Scripts/sell.gd" id="2_6d7d8"]
 [ext_resource type="Texture2D" uid="uid://dn4sxh2i2c603" path="res://Assets/parchemin.png" id="2_adq85"]
 [ext_resource type="Script" path="res://Scripts/stock.gd" id="3_uicns"]
+[ext_resource type="Texture2D" uid="uid://bbjxviqb0kcg4" path="res://Assets/icone_light.png" id="5_4rx2a"]
+[ext_resource type="Texture2D" uid="uid://bxgv8mc4usa7q" path="res://Assets/icone_sound.png" id="6_7k0gl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vw8v"]
 font_color = Color(0, 0, 0, 1)
@@ -43,8 +45,7 @@ offset_left = 100.0
 offset_top = 10.0
 offset_right = 250.0
 offset_bottom = 60.0
-text = "NOM:
-description"
+text = "NOM:"
 label_settings = SubResource("LabelSettings_4vw8v")
 
 [node name="StockPrice" type="Label" parent="TextureRect"]
@@ -77,3 +78,36 @@ offset_right = 285.0
 offset_bottom = 95.0
 text = "Stocker"
 script = ExtResource("3_uicns")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 34.0
+offset_right = 243.0
+offset_bottom = 61.0
+
+[node name="light_icon" type="TextureRect" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_4rx2a")
+expand_mode = 3
+
+[node name="power_light" type="TextureRect" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
+
+[node name="sound_icon" type="TextureRect" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_7k0gl")
+expand_mode = 3
+
+[node name="power_sound" type="TextureRect" parent="TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 3
