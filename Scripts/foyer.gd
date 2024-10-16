@@ -8,7 +8,6 @@ var etage
 var numero
 var label : Label
 
-var habitant
 var bonheur : float
 var confiance 
 var luminosite : float
@@ -20,7 +19,6 @@ static var foyer_cible : Foyer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	habitant = 1 + randi() % 2  # Random between 1 and 3
 	bonheur = 50 # randi() % 101  # Random between 0 and 100
 	luminosite = 50 + randi() % 41 # Random between 0 and 100
 	son = 50 + randi() % 41  # Random between 0 and 100

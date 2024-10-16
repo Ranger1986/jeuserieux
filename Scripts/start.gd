@@ -36,7 +36,6 @@ func _ready() -> void:
 func display_foyer():
 	var foyer = Foyer.foyer_cible
 	find_child("AptLabel").text="Appartement: " + str(foyer.name)
-	find_child("HabLabel").text="Habitant: " + str(foyer.habitant)
 	find_child("BonBar").value = foyer.bonheur
 	find_child("LumBar").value = foyer.luminosite
 	find_child("SonBar").value = foyer.son
