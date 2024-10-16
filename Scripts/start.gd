@@ -70,15 +70,32 @@ func _on_sell(store_item: StoreItem) -> void:
 		add_child(instance)
 		instance.position= (Vector2(1280,720) - instance.get_child(0).size) /2
 		instance.connect("sell_end_signal", Callable(self, "_end_sell"))
+		instance.set_item(store_item.item)
 
 func _on_refresh_display_foyer() -> void:
 	var cible = Foyer.get_foyer_cible()
 	cible.display_info()
 	
 func _end_sell(item: Item, price:int):
-	Foyer.foyer_cible.bonheur = min(max(Foyer.foyer_cible.bonheur + (item.priceStock-price )/item.priceStock * 100,0),100)
+	# DEBUG
+	if (item == null):
+		print("Item is null, cannot proceed with the sale.")
+		return
+	# FIN DEBUG
+	print("Avant : " + str(Foyer.foyer_cible.bonheur))
+	# Foyer.foyer_cible.bonheur = min(max(Foyer.foyer_cible.bonheur + (item.priceStock-price )/item.priceStock * 100,0),100)
 	Foyer.foyer_cible.luminosite = max(Foyer.foyer_cible.luminosite - item.lumProt, 0) # Update des lumières
+	Foyer.foyer_cible.luminosite = min(Foyer.foyer_cible.luminosite - item.lumProt, 100) # Update des lumières
+	
 	Foyer.foyer_cible.son = max(Foyer.foyer_cible.son - item.noiseProt, 0) # Update des sons
+	Foyer.foyer_cible.son = min(Foyer.foyer_cible.son - item.noiseProt, 100) # Update des sons
+	
+	Foyer.foyer_cible.bonheur = Foyer.foyer_cible.bonheur + (Foyer.foyer_cible.luminosite + Foyer.foyer_cible.son) / 2
+	Foyer.foyer_cible.bonheur = (int)(max(Foyer.foyer_cible.bonheur, 0)) 
+	Foyer.foyer_cible.bonheur = (int)(min(Foyer.foyer_cible.bonheur, 100))
+	
+	print("Après : " + str(Foyer.foyer_cible.bonheur))
+	
 	Foyer.foyer_cible.budget -= price
 	budget_player+=price
 	

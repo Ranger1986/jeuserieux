@@ -34,6 +34,7 @@ func give_parameters(info: Item) -> void:
 	if item.hide:
 		hide();
 	display()
+		
 func display():
 	name_desc.text = item.nom + ":\n"
 	name_desc.text += "Lum: " + str(item.lumProt) + "     "
