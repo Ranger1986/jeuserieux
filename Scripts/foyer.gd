@@ -13,6 +13,7 @@ var confiance
 var luminosite : float
 var son : float
 var budget
+var image : ImageTexture
 
 var items: Array
 static var foyer_cible : Foyer
@@ -25,6 +26,11 @@ func _ready() -> void:
 	budget = 100 + randi() % 101
 	pressed.connect(self._button_pressed)
 	liste_foyer.append(self)
+	var imgString = get_meta("Img")
+	if (imgString != null):
+		var img : Image = Image.new()
+		img.load(imgString)
+		image= ImageTexture.create_from_image(img)
 
 func _process(delta: float) -> void:
 	var besoin_facteur = 0

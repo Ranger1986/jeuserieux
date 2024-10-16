@@ -40,6 +40,7 @@ func display_foyer():
 	find_child("LumBar").value = foyer.luminosite
 	find_child("SonBar").value = foyer.son
 	find_child("BudLabel").text="Budget: " + str(foyer.budget) +"$"
+	find_child("ImgHab").texture = foyer.image
 func _process(_delta: float) -> void:
 	budget_player_label.text = "Budget: " + str(budget_player)
 	bonheur_bar.value=Foyer.get_bonheur_moyen()
