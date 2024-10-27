@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgobmax6tvnpi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hncnq"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_hncnq")

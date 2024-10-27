@@ -29,7 +29,7 @@ func give_parameters(info: Item) -> void:
 	var img = Image.new()
 	img.load(item.imgPath)
 	var itex = ImageTexture.create_from_image(img)
-	image.texture = itex	
+	image.texture = itex
 	stockAmount=0
 	if item.hide:
 		hide();

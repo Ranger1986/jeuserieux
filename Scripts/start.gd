@@ -2,7 +2,7 @@ extends Node2D
 
 var budget_player: int
 var budget_player_label: Label
-var bonheur_label: Label
+var bonheur_bar: ProgressBar
 
 func load_json(path: String):
 	if FileAccess.file_exists(path):
@@ -17,7 +17,7 @@ func load_json(path: String):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	budget_player_label = find_child("Budget_player")
-	bonheur_label = find_child("Bonheur")
+	bonheur_bar = find_child("Bonheur")
 	budget_player = 10000.0
 	var store_item: Array = Item.load_items_from_json("res://items.json")
 	var scene = preload("res://Scene/item.tscn")
@@ -36,14 +36,14 @@ func _ready() -> void:
 func display_foyer():
 	var foyer = Foyer.foyer_cible
 	find_child("AptLabel").text="Appartement: " + str(foyer.name)
-	find_child("HabLabel").text="Habitant: " + str(foyer.habitant)
 	find_child("BonBar").value = foyer.bonheur
 	find_child("LumBar").value = foyer.luminosite
 	find_child("SonBar").value = foyer.son
 	find_child("BudLabel").text="Budget: " + str(foyer.budget) +"$"
+	find_child("ImgHab").texture = foyer.image
 func _process(_delta: float) -> void:
 	budget_player_label.text = "Budget: " + str(budget_player)
-	bonheur_label.text = "Bonheur: " + str(Foyer.get_bonheur_moyen()) + "%"
+	bonheur_bar.value=Foyer.get_bonheur_moyen()
 	if Input.is_key_pressed(KEY_D):
 		find_children("Control")[0].print_tree()
 	if Foyer.foyer_cible != null:

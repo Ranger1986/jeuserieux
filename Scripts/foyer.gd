@@ -8,12 +8,12 @@ var etage
 var numero
 var label : Label
 
-var habitant
 var bonheur : float
 var confiance 
 var luminosite : float
 var son : float
 var budget
+var image : ImageTexture
 
 var items: Array
 static var foyer_cible : Foyer
@@ -45,13 +45,17 @@ func _ready() -> void:
 	add_child(budget_timer)
 	budget_timer.start()
 
-	habitant = 1 + randi() % 2
 	bonheur = 50 
 	luminosite = 50 + randi() % 41 
 	son = 50 + randi() % 41
 	budget = 100 + randi() % 150
 	pressed.connect(self._button_pressed)
 	liste_foyer.append(self)
+	var imgString = get_meta("Img")
+	if (imgString != null):
+		var img : Image = Image.new()
+		img.load(imgString)
+		image= ImageTexture.create_from_image(img)
 
 
 func _on_bonheur_timer_timeout() -> void:
@@ -74,6 +78,12 @@ func _on_bonheur_timer_timeout() -> void:
 		moyenne = 0
 	
 	bonheur = moyenne
+	
+func bloup() -> void:
+	for foyer in liste_foyer:
+		if is_instance_valid(foyer):
+			foyer.budget = foyer.budget + randi_range(0, 15)	
+	print("je suis perdu")
 	
 func _on_budget_timer_timeout() -> void:
 	for foyer in liste_foyer:
