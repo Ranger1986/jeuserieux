@@ -18,15 +18,67 @@ var budget
 var items: Array
 static var foyer_cible : Foyer
 
+# décrementation du bonheur en fonction du temps (simulation du bonheur global de l'immeuble comme dans des jeux de gestion)s
+var decrbonheur: float = 0.5 # en seconde
+var valeurDecrBonheur = 0.00005 # en %
+var bonheur_timer: Timer
+
+var incrbudget: float = 15.
+var incrArgentHabitant = 100
+var budget_timer: Timer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	habitant = 1 + randi() % 2  # Random between 1 and 3
-	bonheur = 50 # randi() % 101  # Random between 0 and 100
-	luminosite = 50 + randi() % 41 # Random between 0 and 100
-	son = 50 + randi() % 41  # Random between 0 and 100
-	budget = 100 + randi() % 101
+	bonheur_timer = Timer.new()
+	bonheur_timer.wait_time = decrbonheur
+	bonheur_timer.one_shot = false 
+	bonheur_timer.connect("timeout", Callable(self, "_on_bonheur_timer_timeout"))
+	
+	budget_timer = Timer.new()
+	budget_timer.wait_time = incrbudget
+	budget_timer.one_shot = false 
+	budget_timer.connect("timeout", Callable(self, "_on_budget_timer_timeout"))
+	
+	add_child(bonheur_timer)
+	bonheur_timer.start()
+	
+	add_child(budget_timer)
+	budget_timer.start()
+
+	habitant = 1 + randi() % 2
+	bonheur = 50 
+	luminosite = 50 + randi() % 41 
+	son = 50 + randi() % 41
+	budget = 100 + randi() % 150
 	pressed.connect(self._button_pressed)
 	liste_foyer.append(self)
+
+
+func _on_bonheur_timer_timeout() -> void:
+	for foyer in liste_foyer:
+		if is_instance_valid(foyer):
+			foyer.bonheur -= foyer.bonheur * valeurDecrBonheur
+			foyer.bonheur = max(foyer.bonheur, 0)
+	
+	var moyenne : float = 0.0
+	var valid_foyer_count = 0
+	
+	for foyer in liste_foyer:
+		if is_instance_valid(foyer):
+			moyenne += foyer.bonheur
+			valid_foyer_count += 1
+	
+	if valid_foyer_count > 0:
+		moyenne /= valid_foyer_count 
+	else:
+		moyenne = 0
+	
+	bonheur = moyenne
+	
+func _on_budget_timer_timeout() -> void:
+	for foyer in liste_foyer:
+		if is_instance_valid(foyer):
+			foyer.budget = foyer.budget + randi_range(0, 15)	
 
 func _process(delta: float) -> void:
 	var besoin_facteur = 0
@@ -38,8 +90,7 @@ func _process(delta: float) -> void:
 		besoin_facteur-=BESOIN_FLOOR-luminosite
 	if son>BESOIN_CEIL:
 		besoin_facteur+=luminosite-BESOIN_CEIL
-	bonheur+=bonheur*besoin_facteur/100*delta
-	bonheur = max(min(bonheur,100),0)
+
 	if(bonheur < 50):
 		get_children()[0].show()
 		var anim_player = get_node("animation_texte_bulle")
@@ -71,5 +122,4 @@ static func get_bonheur_moyen() -> int:
 		moyenne /= valid_foyer_count 
 	else:
 		moyenne = 0
-
 	return int(moyenne)
