@@ -385,7 +385,7 @@ offset_left = 124.0
 offset_top = 163.0
 offset_right = 157.0
 offset_bottom = 224.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait1.png"
 
 [node name="bulle_texte_E60" type="TextureRect" parent="E60"]
 visible = false
@@ -418,7 +418,7 @@ offset_left = 115.0
 offset_top = 248.0
 offset_right = 157.0
 offset_bottom = 287.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait2.png"
 
 [node name="bulle_texte_E50" type="TextureRect" parent="E50"]
 visible = false
@@ -449,7 +449,7 @@ offset_left = 344.0
 offset_top = 234.0
 offset_right = 402.0
 offset_bottom = 288.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait3.png"
 
 [node name="bulle_texte_E51" type="TextureRect" parent="E51"]
 visible = false
@@ -479,7 +479,7 @@ offset_left = 114.0
 offset_top = 333.0
 offset_right = 155.0
 offset_bottom = 376.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait4.png"
 
 [node name="bulle_texte_E40" type="TextureRect" parent="E40"]
 visible = false
@@ -510,7 +510,7 @@ offset_left = 107.0
 offset_top = 397.0
 offset_right = 171.0
 offset_bottom = 460.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait5.png"
 
 [node name="bulle_texte_E30" type="TextureRect" parent="E30"]
 visible = false
@@ -541,7 +541,7 @@ offset_left = 342.0
 offset_top = 397.0
 offset_right = 402.0
 offset_bottom = 459.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait6.png"
 
 [node name="bulle_texte_E31" type="TextureRect" parent="E31"]
 visible = false
@@ -570,7 +570,7 @@ offset_left = 106.0
 offset_top = 479.0
 offset_right = 164.0
 offset_bottom = 532.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait7.png"
 
 [node name="bulle_texte_E20" type="TextureRect" parent="E20"]
 visible = false
@@ -601,7 +601,7 @@ offset_left = 342.0
 offset_top = 472.0
 offset_right = 404.0
 offset_bottom = 533.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait8.png"
 
 [node name="bulle_texte_E21" type="TextureRect" parent="E21"]
 visible = false
@@ -630,7 +630,7 @@ offset_left = 105.0
 offset_top = 551.0
 offset_right = 158.0
 offset_bottom = 616.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait9.png"
 
 [node name="bulle_texte_E10" type="TextureRect" parent="E10"]
 visible = false
@@ -661,7 +661,7 @@ offset_left = 353.0
 offset_top = 550.0
 offset_right = 405.0
 offset_bottom = 615.0
-metadata/Img = "res://Assets/Nat.png"
+metadata/Img = "res://Assets/portrait10.png"
 
 [node name="bulle_texte_E11" type="TextureRect" parent="E11"]
 visible = false
