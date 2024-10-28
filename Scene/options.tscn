@@ -137,6 +137,7 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_q2pju")
 text = "Retour"
 script = ExtResource("1_7tw5h")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="item_selected" from="VBoxContainer/VBoxContainerVideo/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/VBoxContainerVideo/OptionButton2" to="." method="_on_option_button_2_item_selected"]
