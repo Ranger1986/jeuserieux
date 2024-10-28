@@ -83,7 +83,6 @@ func _end_sell(price:int):
 		print("Item is null, cannot proceed with the sale.")
 		return
 	# FIN DEBUG
-	print("Avant : " + str(Foyer.foyer_cible.bonheur))
 	# Foyer.foyer_cible.bonheur = min(max(Foyer.foyer_cible.bonheur + (item.priceStock-price )/item.priceStock * 100,0),100)
 	Foyer.foyer_cible.luminosite = max(Foyer.foyer_cible.luminosite - StoreItem.item_cible.item.lumProt, 0) # Update des lumières
 	Foyer.foyer_cible.luminosite = min(Foyer.foyer_cible.luminosite - StoreItem.item_cible.item.lumProt, 100) # Update des lumières
@@ -91,9 +90,14 @@ func _end_sell(price:int):
 	Foyer.foyer_cible.son = max(Foyer.foyer_cible.son - StoreItem.item_cible.item.noiseProt, 0) # Update des sons
 	Foyer.foyer_cible.son = min(Foyer.foyer_cible.son - StoreItem.item_cible.item.noiseProt, 100) # Update des sons
 	
-	Foyer.foyer_cible.bonheur = Foyer.foyer_cible.bonheur + (Foyer.foyer_cible.luminosite + Foyer.foyer_cible.son) / 2
-	Foyer.foyer_cible.bonheur = (int)(max(Foyer.foyer_cible.bonheur, 0)) 
-	Foyer.foyer_cible.bonheur = (int)(min(Foyer.foyer_cible.bonheur, 100))
+	print("Avant : " + str(Foyer.foyer_cible.bonheur))
+	var bonheur = Foyer.foyer_cible.bonheur + (Foyer.foyer_cible.luminosite + Foyer.foyer_cible.son) / 2 / 10
+	print("1 : " + str(bonheur))
+	bonheur = (int)(max(bonheur, 0)) 
+	print("2 : " + str(bonheur))
+	bonheur = (int)(min(bonheur, 100))
+	print("3 : " + str(bonheur))
+	Foyer.foyer_cible.set_bonheur(bonheur)
 	
 	print("Après : " + str(Foyer.foyer_cible.bonheur))
 	

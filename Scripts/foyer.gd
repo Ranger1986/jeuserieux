@@ -63,27 +63,6 @@ func _on_bonheur_timer_timeout() -> void:
 			foyer.bonheur -= foyer.bonheur * valeurDecrBonheur
 			foyer.bonheur = max(foyer.bonheur, 0)
 	
-	var moyenne : float = 0.0
-	var valid_foyer_count = 0
-	
-	for foyer in liste_foyer:
-		if is_instance_valid(foyer):
-			moyenne += foyer.bonheur
-			valid_foyer_count += 1
-	
-	if valid_foyer_count > 0:
-		moyenne /= valid_foyer_count 
-	else:
-		moyenne = 0
-	
-	bonheur = moyenne
-	
-func bloup() -> void:
-	for foyer in liste_foyer:
-		if is_instance_valid(foyer):
-			foyer.budget = foyer.budget + randi_range(0, 15)	
-	print("je suis perdu")
-	
 func _on_budget_timer_timeout() -> void:
 	for foyer in liste_foyer:
 		if is_instance_valid(foyer):
@@ -135,3 +114,6 @@ static func get_bonheur_moyen() -> int:
 	else:
 		moyenne = 0
 	return int(moyenne)
+
+func set_bonheur(m_bonheur : int):
+	bonheur=m_bonheur
