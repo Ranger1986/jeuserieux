@@ -57,7 +57,6 @@ func _ready() -> void:
 		img.load(imgString)
 		image= ImageTexture.create_from_image(img)
 
-
 func _on_bonheur_timer_timeout() -> void:
 	for foyer in liste_foyer:
 		if is_instance_valid(foyer):
@@ -105,6 +104,9 @@ func _process(delta: float) -> void:
 		get_children()[0].show()
 		var anim_player = get_node("animation_texte_bulle")
 		anim_player.play("idle")
+	
+	if(bonheur >= 80):
+		pass
 		
 func _button_pressed():
 	Foyer.set_cible(self)

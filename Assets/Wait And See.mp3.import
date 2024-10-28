@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu1fj8nfev78n"
+path="res://.godot/imported/Wait And See.mp3-4808e0aa769ea897f474bdc852fdd9d6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Wait And See.mp3"
+dest_files=["res://.godot/imported/Wait And See.mp3-4808e0aa769ea897f474bdc852fdd9d6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

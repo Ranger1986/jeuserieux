@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dya0ptu5nkrfb"
+path="res://.godot/imported/World Of Nowhere.mp3-c50a877c0f80ee9b87264afcec545da0.mp3str"
+
+[deps]
+
+source_file="res://Assets/World Of Nowhere.mp3"
+dest_files=["res://.godot/imported/World Of Nowhere.mp3-c50a877c0f80ee9b87264afcec545da0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

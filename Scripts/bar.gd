@@ -25,15 +25,28 @@ func _process(delta: float) -> void:
 	pass
 
 func _value_changed(new_value: float) -> void:
-	if (new_value<30):
-		stBox.bg_color = Color(255,0,0)
-		theme.set_stylebox("fill", "ProgressBar", stBox)
-	elif (new_value<60):
-		stBox.bg_color = Color(255,255,0)
-		theme.set_stylebox("fill", "ProgressBar", stBox)
-	elif (new_value<80):
-		stBox.bg_color = Color(128,192,0)
-		theme.set_stylebox("fill", "ProgressBar", stBox)
+	var ColDepart: Color
+	var ColFin: Color
+	var t: float
+
+	if new_value < 30:
+		ColDepart = Color(1, 0, 0)
+		ColFin = Color(1, 1, 0)  
+		t = new_value / 30.0
+	elif new_value < 60:
+		ColDepart = Color(1, 1, 0) 
+		ColFin = Color(0.5, 0.75, 0) 
+		t = (new_value - 30.0) / 30.0
+	elif new_value < 80:
+		ColDepart = Color(0.5, 0.75, 0)
+		ColFin = Color(0, 1, 0)   
+		t = (new_value - 60.0) / 20.0
 	else:
-		stBox.bg_color = Color(0,255,0)
-		theme.set_stylebox("fill", "ProgressBar", stBox)
+		ColDepart = Color(0, 1, 0)
+		ColFin = Color(0, 1, 0)
+		t = 0.0
+		
+	var inter = ColDepart.lerp(ColFin, t)
+	
+	stBox.bg_color = inter
+	theme.set_stylebox("fill", "ProgressBar", stBox)

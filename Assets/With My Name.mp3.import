@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sw3cnan537b"
+path="res://.godot/imported/With My Name.mp3-9bf3face797726006563640391f1caad.mp3str"
+
+[deps]
+
+source_file="res://Assets/With My Name.mp3"
+dest_files=["res://.godot/imported/With My Name.mp3-9bf3face797726006563640391f1caad.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
