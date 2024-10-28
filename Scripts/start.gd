@@ -42,7 +42,7 @@ func display_foyer():
 	find_child("BudLabel").text="Budget: " + str(foyer.budget) +"$"
 	find_child("ImgHab").texture = foyer.image
 func _process(_delta: float) -> void:
-	budget_player_label.text = "Budget: " + str(budget_player)
+	budget_player_label.text = "Budget: " + str(budget_player) + "$"
 	bonheur_bar.value=Foyer.get_bonheur_moyen()
 	if Input.is_key_pressed(KEY_D):
 		find_children("Control")[0].print_tree()
@@ -63,6 +63,7 @@ func _on_stock(store_item: StoreItem) -> void:
 func _on_sell(store_item: StoreItem) -> void:
 	if store_item.stockAmount == 0:
 		GlobalPopup.show_popup("Stock insuffisant", get_viewport().get_mouse_position(), 0)
+		StoreItem.item_cible = null
 		return
 	var target = Foyer.get_foyer_cible()
 	if target != null:
@@ -96,6 +97,8 @@ func _end_sell(price:int):
 	
 	print("Après : " + str(Foyer.foyer_cible.bonheur))
 	
+	
+	GlobalPopup.show_popup(str(price)+"$", get_viewport().get_mouse_position(), 1)
 	Foyer.foyer_cible.budget -= price
 	budget_player+=price
 	

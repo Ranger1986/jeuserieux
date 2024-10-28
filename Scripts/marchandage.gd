@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 	pass
 
 func set_item(p_item: Item)->void:
-	print("Setting item: ", p_item)
 	item=p_item
 	priceControl.value=item.priceStock
 
@@ -26,6 +25,8 @@ func end_sell()->void:
 	if (Foyer.foyer_cible.budget>priceControl.value) :
 		emit_signal("sell_end_signal", priceControl.value)
 		self.queue_free()
+		return
+	GlobalPopup.show_popup("Budget insuffisant", get_viewport().get_mouse_position(), 0)
 	
 func annulation()->void:
 	StoreItem.item_cible = null
