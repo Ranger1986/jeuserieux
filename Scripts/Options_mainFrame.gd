@@ -33,7 +33,10 @@ func _on_option_button_2_item_selected(index: int) -> void:
 			$VBoxContainer/VBoxContainerVideo/OptionButton.visible = true
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scene/main_frame.tscn")
+	get_node("/root").remove_child(self)
+	for foyer : Foyer in Foyer.liste_foyer:
+		foyer.bonheur_timer.start()
+		foyer.budget_timer.start()
 
 func _on_button_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/menu.tscn")

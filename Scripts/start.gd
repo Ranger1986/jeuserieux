@@ -1,8 +1,12 @@
 extends Node2D
 
+class_name MainScene
+
 var budget_player: int
 var budget_player_label: Label
 var bonheur_bar: ProgressBar
+
+static var mainScene : PackedScene = PackedScene.new()
 
 func load_json(path: String):
 	if FileAccess.file_exists(path):
@@ -31,7 +35,6 @@ func _ready() -> void:
 		instance.connect("sell_signal", Callable(self, "_on_sell"))
 		instance.connect("stock_signal", Callable(self, "_on_stock"))
 	StoreItem.item_cible=null;
-		
 
 func display_foyer():
 	var foyer = Foyer.foyer_cible
@@ -112,4 +115,10 @@ func _end_sell(price:int):
 	
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		get_tree().change_scene_to_file("res://Scene/options_mainFrame.tscn")
+		for foyer : Foyer in Foyer.liste_foyer:
+			foyer.bonheur_timer.stop()
+			foyer.budget_timer.stop()
+		var root = get_node("/root")
+		var nextScene = load("res://Scene/options_mainFrame.tscn")
+		nextScene = nextScene.instantiate()
+		root.add_child(nextScene)

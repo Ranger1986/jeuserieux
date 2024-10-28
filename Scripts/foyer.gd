@@ -58,26 +58,13 @@ func _ready() -> void:
 		image= ImageTexture.create_from_image(img)
 
 func _on_bonheur_timer_timeout() -> void:
-	for foyer in liste_foyer:
-		if is_instance_valid(foyer):
-			foyer.bonheur -= foyer.bonheur * valeurDecrBonheur
-			foyer.bonheur = max(foyer.bonheur, 0)
+	bonheur -= bonheur * valeurDecrBonheur
+	bonheur = max(bonheur, 0)
 	
 func _on_budget_timer_timeout() -> void:
-	for foyer in liste_foyer:
-		if is_instance_valid(foyer):
-			foyer.budget = foyer.budget + randi_range(0, 15)	
+	budget = budget + randi_range(0, 15)	
 
 func _process(delta: float) -> void:
-	var besoin_facteur = 0
-	if luminosite<BESOIN_FLOOR:
-		besoin_facteur-=BESOIN_FLOOR-luminosite
-	if luminosite>BESOIN_CEIL:
-		besoin_facteur+=luminosite-BESOIN_CEIL
-	if son<BESOIN_FLOOR:
-		besoin_facteur-=BESOIN_FLOOR-luminosite
-	if son>BESOIN_CEIL:
-		besoin_facteur+=luminosite-BESOIN_CEIL
 
 	if(bonheur < 50):
 		get_children()[0].show()
