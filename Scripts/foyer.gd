@@ -104,15 +104,16 @@ func _on_alea_timer_timeout() -> void:
 		2:
 			# MAJ luminosité et bruit - événements combinés
 			luminosite = clamp(luminosite + incr, 0, 100)
-			son = clamp(son - incr, 0, 100)
+			son = clamp(son + incr, 0, 100)
 			var combined_events = [
 				"Une voiture passe avec \nles phares allumés \net la musique à fond",
 				"Un éclair illumine \nbrièvement le ciel, suivi d'un \ngrondement de tonnerre",
 				"Les ouvriers installent \nde nouvelles lampes en faisant \nbeaucoup de bruit"
 			]
 			event_message = combined_events[randi() % combined_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de lumière et \nde bruit"
-			
-		
+	
+	bonheur -= (luminosite + son) / 5 / 10
+	
 func _process(delta: float) -> void:
 
 	if(bonheur < 50):
