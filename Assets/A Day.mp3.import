@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4djvilec13m5"
+path="res://.godot/imported/A Day.mp3-0b56aa14a8a29331747279ecf4287f60.mp3str"
+
+[deps]
+
+source_file="res://Assets/A Day.mp3"
+dest_files=["res://.godot/imported/A Day.mp3-0b56aa14a8a29331747279ecf4287f60.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

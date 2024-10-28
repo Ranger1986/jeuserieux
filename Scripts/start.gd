@@ -18,7 +18,7 @@ func load_json(path: String):
 func _ready() -> void:
 	budget_player_label = find_child("Budget_player")
 	bonheur_bar = find_child("Bonheur")
-	budget_player = 10000.0
+	budget_player = 1500.0
 	var store_item: Array = Item.load_items_from_json("res://items.json")
 	var scene = preload("res://Scene/item.tscn")
 	var store: VBoxContainer = find_child("VBoxContainer")

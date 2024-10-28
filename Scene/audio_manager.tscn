@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl24ckrt2i1x4"]
+[gd_scene load_steps=10 format=3 uid="uid://dl24ckrt2i1x4"]
 
 [ext_resource type="Script" path="res://Scripts/GlobalAudioSettings.gd" id="1_5m3bq"]
-[ext_resource type="AudioStream" uid="uid://7gx3w0alcrbr" path="res://Assets/Home Power.wav" id="1_hxkxl"]
+[ext_resource type="AudioStream" uid="uid://sw3cnan537b" path="res://Assets/With My Name.mp3" id="2_je11h"]
+[ext_resource type="AudioStream" uid="uid://dya0ptu5nkrfb" path="res://Assets/World Of Nowhere.mp3" id="3_x4b76"]
+[ext_resource type="AudioStream" uid="uid://dtunlmvro7ter" path="res://Assets/You're Strange.mp3" id="4_ay3c8"]
+[ext_resource type="AudioStream" uid="uid://dkaabq1uh8mwp" path="res://Assets/Your Tomorrow.mp3" id="5_jirut"]
+[ext_resource type="AudioStream" uid="uid://d4djvilec13m5" path="res://Assets/A Day.mp3" id="6_xnbn2"]
+[ext_resource type="AudioStream" uid="uid://cu1fj8nfev78n" path="res://Assets/Wait And See.mp3" id="7_7si5m"]
+[ext_resource type="AudioStream" uid="uid://b463umfekr5fi" path="res://Assets/Time Circus.mp3" id="8_6ljto"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_dmska"]
+shuffle = true
+stream_count = 7
+stream_0 = ExtResource("2_je11h")
+stream_1 = ExtResource("3_x4b76")
+stream_2 = ExtResource("4_ay3c8")
+stream_3 = ExtResource("5_jirut")
+stream_4 = ExtResource("6_xnbn2")
+stream_5 = ExtResource("7_7si5m")
+stream_6 = ExtResource("8_6ljto")
 
 [node name="AudioManager" type="Control"]
 layout_mode = 3
@@ -13,6 +30,6 @@ grow_vertical = 2
 script = ExtResource("1_5m3bq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_hxkxl")
-volume_db = -10.0
+stream = SubResource("AudioStreamPlaylist_dmska")
+volume_db = -15.0
 autoplay = true
