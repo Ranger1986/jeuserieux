@@ -71,8 +71,9 @@ func _process(delta: float) -> void:
 		var anim_player = get_node("animation_texte_bulle")
 		anim_player.play("idle")
 	
-	if(bonheur >= 80):
-		pass
+	if(get_bonheur_moyen() >= 95):
+		get_tree().change_scene_to_file("res://Scene/EndGame.tscn")
+
 		
 func _button_pressed():
 	Foyer.set_cible(self)

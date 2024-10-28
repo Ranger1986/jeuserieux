@@ -1,3 +1,65 @@
-[gd_scene format=3 uid="uid://dn57xc61du7r0"]
+[gd_scene load_steps=5 format=3 uid="uid://cmy115saf5k12"]
 
-[node name="EndGame" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://brpe453wyay48" path="res://Assets/Day2.png" id="1_jh77p"]
+[ext_resource type="FontFile" uid="uid://b6ocg4l0krikr" path="res://Assets/Pixeled.ttf" id="1_sd31r"]
+[ext_resource type="Script" path="res://Scripts/ReturnMenuEndGame.gd" id="3_he7py"]
+
+[sub_resource type="Theme" id="Theme_cygsf"]
+default_font_size = 50
+
+[node name="EndGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1416.0
+offset_top = -30.0
+offset_right = 888.0
+offset_bottom = 546.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jh77p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme = SubResource("Theme_cygsf")
+theme_override_constants/separation = 350
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_sd31r")
+text = "Félicitation !
+Vous avez gagné !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_left = 11.0
+offset_top = 648.0
+offset_right = 115.0
+offset_bottom = 702.0
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_sd31r")
+text = "Retour au menu principal"
+script = ExtResource("3_he7py")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Node2D/Button" to="Node2D/Button" method="_on_pressed"]
