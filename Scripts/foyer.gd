@@ -70,6 +70,8 @@ func _process(delta: float) -> void:
 		get_children()[0].show()
 		var anim_player = get_node("animation_texte_bulle")
 		anim_player.play("idle")
+	else:
+		get_children()[0].hide()
 	
 	if(get_bonheur_moyen() >= 95):
 		get_tree().change_scene_to_file("res://Scene/EndGame.tscn")
