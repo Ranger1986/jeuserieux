@@ -30,7 +30,7 @@ func _ready() -> void:
 		instance.owner=self
 		instance.connect("sell_signal", Callable(self, "_on_sell"))
 		instance.connect("stock_signal", Callable(self, "_on_stock"))
-	
+	StoreItem.item_cible=null;
 		
 
 func display_foyer():
@@ -76,19 +76,19 @@ func _on_refresh_display_foyer() -> void:
 	var cible = Foyer.get_foyer_cible()
 	cible.display_info()
 	
-func _end_sell(item: Item, price:int):
+func _end_sell(price:int):
 	# DEBUG
-	if (item == null):
+	if (StoreItem.item_cible == null):
 		print("Item is null, cannot proceed with the sale.")
 		return
 	# FIN DEBUG
 	print("Avant : " + str(Foyer.foyer_cible.bonheur))
 	# Foyer.foyer_cible.bonheur = min(max(Foyer.foyer_cible.bonheur + (item.priceStock-price )/item.priceStock * 100,0),100)
-	Foyer.foyer_cible.luminosite = max(Foyer.foyer_cible.luminosite - item.lumProt, 0) # Update des lumières
-	Foyer.foyer_cible.luminosite = min(Foyer.foyer_cible.luminosite - item.lumProt, 100) # Update des lumières
+	Foyer.foyer_cible.luminosite = max(Foyer.foyer_cible.luminosite - StoreItem.item_cible.item.lumProt, 0) # Update des lumières
+	Foyer.foyer_cible.luminosite = min(Foyer.foyer_cible.luminosite - StoreItem.item_cible.item.lumProt, 100) # Update des lumières
 	
-	Foyer.foyer_cible.son = max(Foyer.foyer_cible.son - item.noiseProt, 0) # Update des sons
-	Foyer.foyer_cible.son = min(Foyer.foyer_cible.son - item.noiseProt, 100) # Update des sons
+	Foyer.foyer_cible.son = max(Foyer.foyer_cible.son - StoreItem.item_cible.item.noiseProt, 0) # Update des sons
+	Foyer.foyer_cible.son = min(Foyer.foyer_cible.son - StoreItem.item_cible.item.noiseProt, 100) # Update des sons
 	
 	Foyer.foyer_cible.bonheur = Foyer.foyer_cible.bonheur + (Foyer.foyer_cible.luminosite + Foyer.foyer_cible.son) / 2
 	Foyer.foyer_cible.bonheur = (int)(max(Foyer.foyer_cible.bonheur, 0)) 
@@ -98,6 +98,10 @@ func _end_sell(item: Item, price:int):
 	
 	Foyer.foyer_cible.budget -= price
 	budget_player+=price
+	
+	StoreItem.item_cible.stockAmount-=1
+	StoreItem.item_cible.display()
+	StoreItem.item_cible = null
 	
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:

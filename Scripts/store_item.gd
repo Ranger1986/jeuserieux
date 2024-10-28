@@ -1,10 +1,11 @@
 class_name StoreItem
 extends Control
 
+static var item_cible : StoreItem
+
 var item: Item
 
 var stockAmount: int
-
 var image: TextureRect
 var icone_power_light: TextureRect
 var icone_power_sound: TextureRect
@@ -65,8 +66,12 @@ func give_parameters(info: Item) -> void:
 func display():
 	name_desc.text = item.nom + ":\n"
 	stock_price.text = str(item.priceStock) + "$\nx" + str(stockAmount)
+	
 func sell():
-	emit_signal("sell_signal", self)
+	if item_cible == null:
+		item_cible = self
+		emit_signal("sell_signal", self)
+		return
 	
 func stock():
 	emit_signal("stock_signal", self)
