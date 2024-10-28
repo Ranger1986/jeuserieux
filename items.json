@@ -25,7 +25,7 @@
 	"imgPath": "res://Assets/occultant.png",
 	"lumProt": -12,
 	"noiseProt": 0,
-	"priceStock": 26.80,
+	"priceStock": 27,
 	"stock": 0,
 	"hide": false
   },
@@ -55,7 +55,7 @@
 	"imgPath": "res://Assets/mi.png",
 	"lumProt": 5,
 	"noiseProt": -23,
-	"priceStock": 339.90,
+	"priceStock": 340,
 	"stock": 0,
 	"hide": false
   }
