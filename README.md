@@ -1,7 +1,7 @@
 # Luminoise
 ![Texte alternatif](README/Menu.png)
 ## Contexte
-Ce projet a été réalisé dans le cadre de la matière Jeu sérieux dans le master informatique IMAGINE de la faculté des sciences de Montpellier.
+Ce projet a été réalisé dans le cadre de la matière Jeu sérieux dans le master informatique IMAGINE de la faculté des sciences de Montpellier avec Godot 4.
 
 Encadrant:
 - Nicolas LUTZ
@@ -13,6 +13,10 @@ Etudiants:
 - Pierre RICHARD
 
 Date: 18 Septembre 2024 - 30 Octobre 2024
+
+## Lancer le jeu
+
+Pour lancer le jeu il suffit de lancer Luminoise.x86_64.
 
 ## Gameplay
 
