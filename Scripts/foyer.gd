@@ -14,6 +14,7 @@ var luminosite : float
 var son : float
 var budget
 var image : ImageTexture
+var event_message = ""
 
 var items: Array
 static var foyer_cible : Foyer
@@ -23,11 +24,12 @@ var decrbonheur: float = 0.5 # en seconde
 var valeurDecrBonheur = 0.00005 # en %
 var bonheur_timer: Timer
 
-var incrbudget: float = 15.
+var incrbudget: float = 30.
 var incrArgentHabitant = 100
 var budget_timer: Timer
 
-# Called when the node enters the scene tree for the first time.
+var alea_timer: Timer
+
 func _ready() -> void:
 	bonheur_timer = Timer.new()
 	bonheur_timer.wait_time = decrbonheur
@@ -39,12 +41,21 @@ func _ready() -> void:
 	budget_timer.one_shot = false 
 	budget_timer.connect("timeout", Callable(self, "_on_budget_timer_timeout"))
 	
+	alea_timer = Timer.new()
+	# en même temps que lorsque les habitants reçoivent l'argent
+	alea_timer.wait_time = incrbudget
+	alea_timer.one_shot = false 
+	alea_timer.connect("timeout", Callable(self, "_on_alea_timer_timeout"))
+	
 	add_child(bonheur_timer)
 	bonheur_timer.start()
 	
 	add_child(budget_timer)
 	budget_timer.start()
-
+	
+	add_child(alea_timer)
+	alea_timer.start()
+	
 	bonheur = 50 
 	luminosite = 50 + randi() % 41 
 	son = 50 + randi() % 41
@@ -63,7 +74,45 @@ func _on_bonheur_timer_timeout() -> void:
 	
 func _on_budget_timer_timeout() -> void:
 	budget = budget + randi_range(0, 15)	
+	
+func _on_alea_timer_timeout() -> void:
+	var event_type = randi() % 3  # 0 pour lumière, 1 pour bruit, 2 pour les deux
+	var incr = randf_range(0, 10) 
+	var event_label : Label
 
+	match event_type:
+		0:
+			# MAJ luminosité - sources de lumière variées
+			luminosite = clamp(luminosite + incr, 0, 100)
+			var light_events = [
+				"L'ampadaire clignote  \ndans la rue, augmentant légèrement \nla luminosité",
+				"Les voisins allument \nun projecteur, baignant la pièce \ndans une lumière vive",
+				"Une enseigne néon à \nl'extérieur brille intensément, \néclairant votre appartement"
+			]
+			event_message = light_events[randi() % light_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de luminosité"
+			
+		1:
+			# MAJ bruit - sources de bruit diverses
+			son = clamp(son + incr, 0, 100)
+			var noise_events = [
+				"Les travaux bruyants \ndans la rue perturbent le silence",
+				"Un camion poubelle \npasse en faisant un bruit \nassourdissant",
+				"Les voisins organisent \nune fête bruyante dans leur \nappartement"
+			]
+			event_message = noise_events[randi() % noise_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de bruit"
+
+		2:
+			# MAJ luminosité et bruit - événements combinés
+			luminosite = clamp(luminosite + incr, 0, 100)
+			son = clamp(son - incr, 0, 100)
+			var combined_events = [
+				"Une voiture passe avec \nles phares allumés \net la musique à fond",
+				"Un éclair illumine \nbrièvement le ciel, suivi d'un \ngrondement de tonnerre",
+				"Les ouvriers installent \nde nouvelles lampes en faisant \nbeaucoup de bruit"
+			]
+			event_message = combined_events[randi() % combined_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de lumière et \nde bruit"
+			
+		
 func _process(delta: float) -> void:
 
 	if(bonheur < 50):

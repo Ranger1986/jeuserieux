@@ -53,8 +53,8 @@
 	"id": 5,
 	"nom": "Mousse isol°",
 	"imgPath": "res://Assets/mi.png",
-	"lumProt": 5,
-	"noiseProt": -23,
+	"lumProt": 0,
+	"noiseProt": 6,
 	"priceStock": 50,
 	"stock": 0,
 	"hide": false
