@@ -104,6 +104,8 @@ func _process(delta: float) -> void:
 		get_children()[0].show()
 		var anim_player = get_node("animation_texte_bulle")
 		anim_player.play("idle")
+	else:
+		get_children()[0].hide()
 	
 	if(bonheur >= 80):
 		pass
