@@ -44,7 +44,38 @@ func display_foyer():
 	find_child("SonBar").value = foyer.son
 	find_child("BudLabel").text="Budget: " + str(foyer.budget) +"$"
 	find_child("ImgHab").texture = foyer.image
-	find_child("EventLabel").text = "Évènement: " + str(foyer.event_message)
+	
+	var icone_light_event = find_child("EventLabel").find_child("LightConsequences")
+	var icone_power_light_event = find_child("EventLabel").find_child("LightPowerConsequences")
+	
+	var icone_sound_event = find_child("EventLabel").find_child("SoundConsequences")
+	var icone_power_sound_event = find_child("EventLabel").find_child("SoundPowerConsequences")
+	
+	if(foyer.event_type != -1): # si l'event existe
+		var event_label = find_child("EventLabel")
+		event_label.text = "Évènement : " + str(foyer.event_message)
+		var pos_event_message = event_label.get_rect()
+		event_label.find_child("HboxConsequences").position.y = pos_event_message.size.y - 26
+		if(foyer.event_type == 0): # event lumiere
+			icone_light_event.show()
+			icone_power_light_event.show()
+			icone_sound_event.hide()
+			icone_power_sound_event.hide()
+		else: if(foyer.event_type == 1): #event son
+			icone_light_event.hide()
+			icone_power_light_event.hide()
+			icone_sound_event.show()
+			icone_power_sound_event.show()
+		else: if(foyer.event_type == 2): # event son et lumiere
+			icone_light_event.show()
+			icone_power_light_event.show()
+			icone_sound_event.show()
+			icone_power_sound_event.show()
+	else: # pas d'event
+		icone_light_event.hide()
+		icone_power_light_event.hide()
+		icone_sound_event.hide()
+		icone_power_sound_event.hide()
 
 func _process(_delta: float) -> void:
 	budget_player_label.text = "Budget: " + str(budget_player) + "$"

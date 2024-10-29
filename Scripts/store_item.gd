@@ -37,27 +37,27 @@ func give_parameters(info: Item) -> void:
 	icone_power_light = find_child("power_light")
 	icone_power_sound = find_child("power_sound")
 	
-	if(item.lumProt <= -12.5):
-		icone_power_light.texture = load("res://Assets/up2.png")
+	if(item.lumProt <= -4):
+		icone_power_light.texture = load("res://Assets/down2.png")
 	else: if(item.lumProt < 0):
-		icone_power_light.texture = load("res://Assets/up1.png")
+		icone_power_light.texture = load("res://Assets/down1.png")
 	else: if(item.lumProt == 0):
 		icone_power_light.texture = load("res://Assets/neutre.png")
-	else: if(item.lumProt <= 12.5):
-		icone_power_light.texture = load("res://Assets/down1.png")
+	else: if(item.lumProt < 4):
+		icone_power_light.texture = load("res://Assets/up1.png")
 	else:	
-		icone_power_light.texture = load("res://Assets/down2.png")
+		icone_power_light.texture = load("res://Assets/up2.png")
 		
-	if(item.noiseProt <= -12.5):
-		icone_power_sound.texture = load("res://Assets/up2.png")
+	if(item.noiseProt <= -4):
+		icone_power_sound.texture = load("res://Assets/down2.png")
 	else: if(item.noiseProt < 0):
-		icone_power_sound.texture = load("res://Assets/up1.png")
+		icone_power_sound.texture = load("res://Assets/down1.png")
 	else: if(item.noiseProt == 0):
 		icone_power_sound.texture = load("res://Assets/neutre.png")
-	else: if(item.noiseProt <= 12.5):
-		icone_power_sound.texture = load("res://Assets/down1.png")
+	else: if(item.noiseProt < 4):
+		icone_power_sound.texture = load("res://Assets/up1.png")
 	else:	
-		icone_power_sound.texture = load("res://Assets/down2.png")
+		icone_power_sound.texture = load("res://Assets/up2.png")
 		
 	if item.hide:
 		hide();

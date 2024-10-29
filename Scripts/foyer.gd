@@ -14,6 +14,7 @@ var luminosite : float
 var son : float
 var budget
 var image : ImageTexture
+var event_type = -1 # -1 etat par defaut : on affiche rien
 var event_message = ""
 
 var items: Array
@@ -76,10 +77,19 @@ func _on_budget_timer_timeout() -> void:
 	budget = budget + randi_range(0, 15)	
 	
 func _on_alea_timer_timeout() -> void:
-	var event_type = randi() % 3  # 0 pour lumière, 1 pour bruit, 2 pour les deux
-	var incr = randf_range(0, 10) 
-	var event_label : Label
-
+	event_type = randi() % 3  # 0 pour lumière, 1 pour bruit, 2 pour les deux
+	var incr = randf_range(0, 10)
+	
+	var light_power_icon = get_node("../../FoyerDisplay/FoyerContainer/EventLabel/HboxConsequences/LightPowerConsequences")
+	var sound_power_icon = get_node("../../FoyerDisplay/FoyerContainer/EventLabel/HboxConsequences/SoundPowerConsequences")
+	
+	if(incr > 5):
+		light_power_icon.texture = preload("res://Assets/down2.png")
+		light_power_icon.texture = preload("res://Assets/down2.png")
+	else:
+		sound_power_icon.texture = preload("res://Assets/down1.png")
+		sound_power_icon.texture = preload("res://Assets/down1.png")
+		
 	match event_type:
 		0:
 			# MAJ luminosité - sources de lumière variées
@@ -89,8 +99,8 @@ func _on_alea_timer_timeout() -> void:
 				"Les voisins allument \nun projecteur, baignant la pièce \ndans une lumière vive",
 				"Une enseigne néon à \nl'extérieur brille intensément, \néclairant votre appartement"
 			]
-			event_message = light_events[randi() % light_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de luminosité"
-			
+			event_message = light_events[randi() % light_events.size()] + " \n" + "Conséquences :"
+
 		1:
 			# MAJ bruit - sources de bruit diverses
 			son = clamp(son + incr, 0, 100)
@@ -99,7 +109,7 @@ func _on_alea_timer_timeout() -> void:
 				"Un camion poubelle \npasse en faisant un bruit \nassourdissant",
 				"Les voisins organisent \nune fête bruyante dans leur \nappartement"
 			]
-			event_message = noise_events[randi() % noise_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de bruit"
+			event_message = noise_events[randi() % noise_events.size()] + " \n" + "Conséquences :"
 
 		2:
 			# MAJ luminosité et bruit - événements combinés
@@ -110,8 +120,8 @@ func _on_alea_timer_timeout() -> void:
 				"Un éclair illumine \nbrièvement le ciel, suivi d'un \ngrondement de tonnerre",
 				"Les ouvriers installent \nde nouvelles lampes en faisant \nbeaucoup de bruit"
 			]
-			event_message = combined_events[randi() % combined_events.size()] + " \n" + "Conséquences : +" + String("%.2f" % incr) + " de lumière et \nde bruit"
-	
+			event_message = combined_events[randi() % combined_events.size()] + " \n" + "Conséquences :"
+
 	bonheur -= (luminosite + son) / 5 / 10
 	
 func _process(delta: float) -> void:
